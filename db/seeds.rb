@@ -6,7 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Topic.destroy_all
-
+Nonprofit.destroy_all
+TopicJunctionTable.destroy_all
 
 Topic.create([
 	{topic: "Food"},
@@ -15,3 +16,12 @@ Topic.create([
 	{topic: "Business"},
 	{topic: "Health"}
 	])
+Nonprofit.create([
+	{email: "example@example.com",
+		name: "Bellamy's Nonprofit",
+		password: "examplenonprofit",
+		main_topic: Topic.first.id,
+		description: "This is a description",
+		website: "www.examplenonprofit.com",
+		oauth: "example"},
+		])

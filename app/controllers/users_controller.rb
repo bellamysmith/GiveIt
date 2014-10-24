@@ -4,12 +4,38 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    
+    if user_signed_in? && current_user.nonprofits.count != 0;
+      @user = current_user
+      @featured = @user.interested.sample
+      @nonprofits = @user.interested.shuffle
+    else
+      @featured = Nonprofit.first
+      @nonprofits = Nonprofit.all.limit(3).shuffle
+    end
+
+
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    @topics = []
+    @topics_by_num = []
+    @user.nonprofits.each do |n|
+      @topics << n.main 
+    end
+
+    @topics.each do |a|
+      @topics_by_num << { 'topic' => a, 'donations' => @topics.count(a)} if !@topics_by_num.include?({  'topic' => a, 'donations' => @topics.count(a)})
+    end
+
+    respond_to do |format|
+        format.html {@user = User.find(params[:id])}
+        format.json { render :json => {data: @topics_by_num} }
+
+    end
+
   end
 
   # GET /users/new
@@ -25,6 +51,10 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    params[:user][:topic_ids].each do |a|
+      @user.topics << a
+    end
+
 
     respond_to do |format|
       if @user.save
@@ -41,6 +71,11 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
+    params[:user][:topic_ids].each do |a|
+      if Topic.where(id: a).count > 0
+      @user.topics << Topic.find(a)
+      end
+    end
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
@@ -50,6 +85,7 @@ class UsersController < ApplicationController
       end
     end
   end
+
 
   # DELETE /users/1
   # DELETE /users/1.json
@@ -69,6 +105,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password_digest, :first_name, :last_name)
+      params.require(:user).permit(:email, :first_name, :last_name)
     end
 end

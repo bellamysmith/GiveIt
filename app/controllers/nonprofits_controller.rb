@@ -4,17 +4,27 @@ class NonprofitsController < ApplicationController
   # GET /nonprofits
   # GET /nonprofits.json
   def index
-    @nonprofits = Nonprofit.all
+    @nonprofits = Nonprofit.order(:name).where("name like ?", "%#{params[:term]}%")  
   end
 
   # GET /nonprofits/1
   # GET /nonprofits/1.json
   def show
+    if current_nonprofit == @nonprofit
+      @donation_count =  Donation.where(nonprofit: @nonprofit).count
+    else
+      redirect_to profile(@nonprofit)
+    end
   end
 
   # GET /nonprofits/new
   def new
+    redirect_to new_nonprofit_registration_path
     @nonprofit = Nonprofit.new
+  end
+
+  def profile
+    @nonprofit = Nonprofit.find(params[:id])
   end
 
   # GET /nonprofits/1/edit
@@ -41,11 +51,19 @@ class NonprofitsController < ApplicationController
   # PATCH/PUT /nonprofits/1.json
   def update
     respond_to do |format|
-       @nonprofit.topics << Topic.find(params[:nonprofit][:topics])
-    binding.pry
+      #There is a blank id with the multiple select field, so I have to go through and push them individually into the Nonprofit's topics
+      params[:nonprofit][:topic_ids].each do |a|
+        if Topic.where(id: a).count > 0
+          @nonprofit.topics << Topic.find(a)
+        end
+      end
+      #main topic param needs to be changed to an integer:
+      @nonprofit.main_topic = params[:nonprofit][:main_topic].to_i
+
       if @nonprofit.update(nonprofit_params)
-        format.html { redirect_to @nonprofit, notice: 'Nonprofit was successfully updated.' }
+        format.html { redirect_to @nonprofit, notice: 'Nonprofit was successfully created!' }
         format.json { render :show, status: :ok, location: @nonprofit }
+
       else
         format.html { render :edit }
         format.json { render json: @nonprofit.errors, status: :unprocessable_entity }
@@ -71,6 +89,6 @@ class NonprofitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nonprofit_params
-      params.require(:nonprofit).permit(:name, :email, :password_digest, :description)
+      params.require(:nonprofit).permit(:name, :email, :description, :website, :city, :state, :phone, :topic_id, :main_topic)
     end
 end

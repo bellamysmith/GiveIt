@@ -1,0 +1,13 @@
+<%= form_tag charges_path do %>
+<%= hidden_field_tag :nonprof, nonprofit.id %>
+  <article>
+    <label class="amount">
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Donate to <%= Nonprofit.find(nonprofit).name%>"
+          data-amount="100"></script>
+
+<% end %>

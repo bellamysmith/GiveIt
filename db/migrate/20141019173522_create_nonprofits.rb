@@ -7,6 +7,7 @@ class CreateNonprofits < ActiveRecord::Migration
       t.string :state
       t.string :phone
       t.string :description
+      t.string :oauth
 
       t.timestamps
     end

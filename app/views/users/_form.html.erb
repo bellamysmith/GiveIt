@@ -1,3 +1,6 @@
+
+
+<div id="user-form">
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -12,10 +15,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
     <%= f.label :first_name %><br>
     <%= f.text_field :first_name %>
   </div>
@@ -23,7 +22,14 @@
     <%= f.label :last_name %><br>
     <%= f.text_field :last_name %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="field">
+    <%= f.label :topic %>
+    <%= f.select :topic_ids, Topic.all.collect {|x| [x.topic, x.id]}, {}, :multiple => true, class: "topic-select" %>
+
   </div>
+  
+    <%= f.submit "Add account info", class: "button expand" %>
+  
+
 <% end %>
+</div>

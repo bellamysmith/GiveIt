@@ -1,22 +1,49 @@
+<%= render '/np-nav' %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @nonprofit.name %>
-</p>
+<header id="nonprofit-show-header">
+	<h2>THIS IS YOUR NONPROFIT DASHBOARD WHERE YOU CAN SEE YOUR DONATIONS AND THE USERS WHO DONATE</h2>
+</header>
+<div class="nonprofit-info">
+<div class ="row">
+	<div class="large-4 columns">
+ 		<strong>Name:</strong>
+  		<%= @nonprofit.name %>
+	</div>
+	<div class="large-4 columns">
+  		<strong>Website:</strong>
+  		<%= @nonprofit.website %>
+	</div>
+	<div class="large-4 columns">
+  		<strong>Phone:</strong>
+  		<%= @nonprofit.phone %>
+	</div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @nonprofit.email %>
-</p>
+</div>
+<div class="row">
+	<div class="large-11 columns" id="description">
+		<p><%= @nonprofit.description %></p>
+	</div>
+</div>
+<div class="row">
+	<p align="right" id="edit-nonprofit-link"><%= link_to 'Edit Your Nonprofit Info', edit_nonprofit_path(@nonprofit) %></p>
+</div>
 
-<p>
+</div>
+<div class="row">
+<div class="donations large-7 columns">
+	<p>Total Donations: <%= @donation_count %></p>
+</div>
 
-
-<p>
-  <strong>Description:</strong>
-  <%= @nonprofit.description %>
-</p>
-
-<%= link_to 'Edit', edit_nonprofit_path(@nonprofit) %> |
+<div class="topics large-3 columns">
+	<h2>Topics:</h2>
+	<h6>Main Topic:</h6>
+		<p align="center"><%= @nonprofit.main %></p>
+	<h6>All topics</h6>	
+	<% @nonprofit.topics.distinct.each do |a| %>
+		<p align="center"><%= a.topic %></p>
+	<% end %>
+</div>
+</div>
+ |
 <%= link_to 'Back', nonprofits_path %>

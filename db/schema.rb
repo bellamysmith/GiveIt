@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141020015054) do
+ActiveRecord::Schema.define(version: 20141022220621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20141020015054) do
     t.string   "state"
     t.string   "phone"
     t.string   "description"
+    t.string   "oauth"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                  default: "", null: false
@@ -46,6 +47,9 @@ ActiveRecord::Schema.define(version: 20141020015054) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.integer  "main_topic"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "nonprofits", ["email"], name: "index_nonprofits_on_email", unique: true, using: :btree
@@ -84,6 +88,8 @@ ActiveRecord::Schema.define(version: 20141020015054) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

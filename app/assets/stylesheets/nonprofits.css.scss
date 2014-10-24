@@ -1,3 +1,101 @@
 // Place all the styles related to the Nonprofits controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.edit-nonprofit-form{
+	width: 600px;
+	margin: 0 auto;
+	background-color: #FFF;
+	padding: 20px;
+	border: 2px solid #f05b47;
+
+}
+#edit-nonprofit-header{
+	background-color: rgba(255,255,255,0);
+	height: 200px;	
+	padding: 20px;
+	h1, h4 {
+		position: relative;
+		top: 0px;
+	}
+}
+.nonprofit-info{
+	border: 1px solid black;
+	width: 900px;
+	margin: 0 auto;
+	div{
+		margin: 10px auto;
+	}
+}
+.donations{
+	
+	margin: 10px auto;
+	border: 1px solid black;
+}
+.topics{
+	border: 1px solid black;
+	margin: 10px auto;
+}
+#nonprofit-show-header{
+	height: 200px;
+}
+#edit-nonprofit-link{
+	position: relative;
+	top: 20px;
+	margin-right: 10px;
+}
+.stripe-sign-in-link{
+	padding: 20px;
+	margin-top: 20px;
+	font-size: 40px;
+	position: relative;
+	margin-bottom: 50px;
+	display: none;
+	
+}
+
+#nonprofit-tax-id{
+	width: 300px;
+	margin: 0 auto;
+}
+.nonprofit-sign-up{
+	width: 600px;
+	height: 250px;
+	margin: 0 auto;
+	background-color: #FFF;
+	padding: 30px;
+
+}
+// #505050 - dark grey
+//bff073 - light 
+//f05b47 - dark coral
+//0dc9f7 - light blue
+//e0e0e0 - light grey
+
+.nonprofit-registration-page {
+	background-color: #0dc9f7;
+	h1,h2,h3,h4,h5,h6{
+		font-weight: 700;
+		color: #FFF;
+	}
+}
+.nonprofit-registration-header{
+	position: relative;
+	width: 80%;
+	margin: 0 auto;
+	top: 60%;
+}
+#np-sign-up-link{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+#myModal{
+	h1,h2,h3,h4,h5,h6{
+		color: #505050;
+	}
+}
+.edit-nonprofit-page{
+
+
+}

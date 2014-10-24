@@ -1,5 +1,9 @@
-<h2>Sign up</h2>
+<% if resource == @user %>
+<header>
+<h2 align="center">Sign up</h2>
+</header>
 
+<div class="sign-up-form">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
@@ -12,7 +16,45 @@
   <div><%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 
-  <div><%= f.submit "Sign up" %></div>
+
+  <div><%= f.submit "Sign up", class: "button expand" %></div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>
+
+
+
+
+
+<!--NONPROFIT REGISTRATION PAGE-->
+
+
+
+<% elsif resource == @nonprofit %>
+<body class="nonprofit-registration-page">
+<div class="nonprofit-registration-header">
+	<h2>Give By One is for Nonprofits</h2>
+	<h5>We want to help you raise money by easily connecting small-scale doners and the nonprofits they are interested in.</h5>
+</div>
+
+
+<a href="#" data-reveal-id="myModal" id="np-sign-up-link">Ready to Sign-up? It's Free!</a>
+ 
+</div>
+<div class="nonprofit-sign-up reveal-modal" id="myModal" data-reveal>
+	<h2>Sign Up</h2>
+	<h5>Enter Your EIN so we can verify your nonprofit status:</h5>
+	<input id="nonprofit-tax-id" type="text"></input>
+		<div class="stripe-sign-in">
+		<%- if devise_mapping.omniauthable? %>
+	  		<%- resource_class.omniauth_providers.each do |provider| %>
+	    		<%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), class: "stripe-sign-in-link" %><br />
+	  		<% end -%>
+	  	<% end %>
+		</div>
+	<a class="close-reveal-modal">&#215;</a>
+</div>
+</body>
+<% end %>
+

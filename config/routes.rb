@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :nonprofits
-  devise_for :users
+  devise_for :nonprofits, :controllers => { :registrations => "nonprofits/registrations", :omniauth_callbacks => "nonprofits/omniauth_callbacks"}
+  devise_for :users, :controllers => { :registrations => "users/registrations" }
   root 'users#index'
   resources :nonprofits
+  resources :charges
 
   resources :users
+  get '/nonprofits/:id/profile' => 'nonprofits#profile', as: :profile
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

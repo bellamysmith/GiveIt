@@ -1,3 +1,109 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+header{
+	h1, h4 {
+		font-family: 'AftaSansThin-Regular';
+		position: relative;
+		top: 100px;
+	}
+	a{
+		position: relative;
+		top: 10px;
+		right: -75%;
+		padding-right: 10px;
+		text-decoration: underline;
+
+	}
+	width:70%;
+	height: 300px;
+	
+	margin: 10px auto;
+	padding: 20px;
+
+}
+.featured-nonprofit{
+	background-color: #FFF;
+	padding: 20px;
+	h1, h2, h3, h4, p {font-family: 'AftaSansThin-Regular';}
+	width: 80%;
+	margin: 0 auto;
+	button{
+		margin: 10px 40%;
+		width: 20%;
+	}
+	.nonprofit-topic{
+		position: relative;
+		
+		
+	}
+	img{
+		position: relative;
+		right: 30px;
+		width: 300px;
+		height: 200px;
+	}
+}
+.nonprofit{
+	background-color: #FFF;
+
+	height: 300px;	
+	margin-top: 10px;
+	padding: 20px;
+	button{
+		position: relative;
+		top: 150px;
+
+	}
+	.nonprofit-title{
+		text-align: center;
+	}
+	.nonprofit-topic{
+		color: rgba(0,0,0,0.5)
+	}
+	button{
+		position: relative;
+		top: 0px;
+		margin: 0 auto;
+		width: 100%
+	}
+}
+.topic-select{
+	height: 200px;
+}
+#user-form, .log-in-form{
+	width: 600px;
+	margin: 0 auto;
+	background-color: #FFF;
+	padding: 20px;
+}
+.user-show-header{
+	height: 200px;
+}
+.user-donations{
+	height: 500px;
+	position: relative;
+	left: 40px;
+	background-color: #FFF;
+	svg{
+		position: relative;
+		left: 16%;
+	}
+
+
+}
+.user-topics{
+	padding: 20px;
+	postion: relative;
+	left: 40px;
+	background-color: #FFF;
+	margin-right: 20px;
+	a{
+		position: relative;
+		left: 90%;
+	}
+
+}
+
+
+

@@ -16,20 +16,38 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+    <%= f.label :website %>
+    <%= f.url_field :website %>
   </div>
-
+  <div class="field">
+    <%= f.label :phone %>
+    <%= f.telephone_field :phone %>
+  </div>
+   <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </div>
+   <div class="field">
+    <%= f.label :state %><br>
+    <%= f.text_field :state %>
+  </div>
 
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.label :description, "Description: (A sentance or two describing your nonprofit to entice the user to donate)" %><br>
+    <%= f.text_area :description %>
   </div>
-  <dic class="field">
+  <div class="field">
+    <%= f.label :main_topic %>
+    <%= f.collection_select :main_topic, Topic.all, :id, :topic %>
+  </div>
+  <div class="field">
+    <p>Choose the topics that your non-profit covers. If you do not choose at least one topic, your non-profit will not be featured on user pages (Maximum 5)</p>
     <%= f.label :topic %>
-    <%= f.collection_select :topics, Topic.all, :id, :topic %>
+    <%= f.select :topic_ids, Topic.all.collect {|x| [x.topic, x.id]}, {}, :multiple => true, class: "topic-select" %>
+
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Continue and Finish", class: "button expand"%>
+  
   </div>
 <% end %>

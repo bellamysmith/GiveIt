@@ -1,0 +1,36 @@
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to "Give It!", nonprofit_path(current_nonprofit) %></h1>
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="active"><%= link_to "Browse Nonprofits", nonprofits_path %></li>
+      <li class="has-dropdown">
+        <a href="#">Account</a>
+        <ul class="dropdown">
+          <li class="active"><%= link_to "View Profile", profile_path(current_nonprofit) %></li>
+          <li><%= link_to "Edit Account Info", edit_nonprofit_path(current_nonprofit) %></li>
+          <li><%= link_to "Sign Out", destroy_nonprofit_session_path, method: :delete %></li>
+        </ul>
+      </li>
+    </ul>
+
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <li><a href="#" data-reveal-id="myModal">About</a></li>
+    </ul>
+  </section>
+</nav>
+<div id="myModal" class="reveal-modal" data-reveal>
+  <h2>About Give By One</h2>
+  <p class="lead">Give a little, change a lot.</p>
+  <p>Give By One uses your interests in topics such as Business, Water, or Education, to curate a list of nonprofits that you may be interested in. Once you sign up, you will have the ability to donate $1 right from your home screen. You can donate as much as you would like to as many nonprofits as you would like! <br>
+  <br> You can even view your giving dashboard where you can see your donation history and the topics you donate to most frequently. </p>
+  <a class="close-reveal-modal">&#215;</a>
+</div>

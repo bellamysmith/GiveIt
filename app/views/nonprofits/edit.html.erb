@@ -1,6 +1,11 @@
-<h1>Editing nonprofit</h1>
-
-<%= render 'form' %>
-
+<body class="edit-nonprofit-page">
+<header id="edit-nonprofit-header">
+<h1>Step 2:</h1>
+<h4>Please enter your nonprofit's information below so we can better connect users to your profile. By choosing topics that accurately reflect your mission, our users will be more willing to click the Donate button!</h4>
+</header>
+<div class="edit-nonprofit-form">
+	<%= render 'form' %>
+</div>
 <%= link_to 'Show', @nonprofit %> |
 <%= link_to 'Back', nonprofits_path %>
+</body>

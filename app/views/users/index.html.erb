@@ -1,30 +1,66 @@
-<h1>Listing users</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Password digest</th>
-      <th>First name</th>
-      <th>Last name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.email %></td>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<body class="home-page">
+    <% if user_signed_in? %>
+      <%= render '/nav' %>
+    <% elsif nonprofit_signed_in? %>
+      <%= render '/npnav' %>
     <% end %>
-  </tbody>
-</table>
+  <header class="home-header">
+    <% if !user_signed_in? %>
+      <%= link_to "Sign In", new_user_session_path %> 
+      <%= link_to "Sign Up", new_user_registration_path %>
+      <%= link_to "Non-Profits Click Here", new_nonprofit_registration_path %>
+    <% end %>
+  
+    <% if nonprofit_signed_in? %>
+      <%= current_nonprofit.name %>
+      <%= link_to "EDIT YOUR NON PROFIT", nonprofit_path(current_nonprofit) %>
+      <%= link_to "Sign Out", destroy_nonprofit_session_path, method: :delete %>
+    <% end %>
 
-<br>
+    <h1>This is your home page!</h1>
+    <h4>Here you can see a featured non-profit and a list of non-profits you may be interested in based on your interests</h4>
+  </header>
 
-<%= link_to 'New User', new_user_path %>
+  <div class="main">
+    <div class="featured-nonprofit">
+      <div class="row">
+        <h2 class="large-10 columns">Featured:</h2>
+        <h4 class="nonprofit-topic large-2 columns"><%= @featured.main %></h4>
+      </div>
+      <div class="row">
+        <div class="large-7 columns">
+         
+        <h3 class="nonprofit-title"><%= link_to @featured.name, profile_path(@featured) %></h3>
+        
+      
+        <a class="nonprofit-website" href="<%=@featured.website %>"><%= @featured.website %></a>
+        <h4 class="nonprofit-description"><%= @featured.description %></h4>
+      </div>
+        <img id='demo' src='http://api.page2images.com/directlink?p2i_url=<%= @featured.website %>&p2i_key=c834695e593e7719' class="large-4 columns">
+      </div>
+      
+
+<script> var p2i=new page2images(); p2i.thumbnail('demo');</script>
+  <% if user_signed_in? %>
+      <%= render partial: "pay", locals: {nonprofit: @featured} %>
+  <% end %>    
+     
+    </div>
+    <div class="row">
+    <% @nonprofits.each do |a| %>
+    <div class="nonprofit large-4 columns">
+      <p class="nonprofit-topic"><%= a.main %></p>
+      <h6 class="nonprofit-title"><%= link_to a.name, profile_path(a) %></h6>
+      <h6 class="nonprofit-description"><%= a.description%></h6>
+    <% if user_signed_in? %>
+      <%= render partial: "pay", locals: {nonprofit: @featured} %>
+    <% end %> 
+      <%= link_to "See More", nonprofit_path(a) %>
+      
+    </div>
+    <% end %>
+  </div>
+
+  </div>
+
+</body>

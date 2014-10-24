@@ -5,6 +5,26 @@ class Nonprofit < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :donations
   has_many :users, through: :donations
-  has_many :TopicJunctionTables
-  has_many :topics, through: :TopicJunctionTables
+  has_many :topicJunctionTables
+  has_many :topics, through: :topicJunctionTables
+  devise :omniauthable, :omniauth_providers => [:stripe_connect]
+  validates_presence_of :oauth
+  
+
+  def main
+  	Topic.find(self.main_topic.to_i).topic
+  end
+  def self.from_omniauth(auth)
+
+  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    user.email = rand(6).to_s + '@example.com'
+    user.password = Devise.friendly_token[0,20]
+    user.name = "Unknown" # assuming the user model has a name
+    user.main_topic = Topic.first.id
+    user.oauth = auth.credentials.token
+
+  end
+end
+
+
 end
