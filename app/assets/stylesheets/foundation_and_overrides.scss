@@ -1361,15 +1361,15 @@ $input-focus-border-color: scale-color(#f05b47, $lightness: -40%);
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-// $topbar-bg-color: $oil;
-// $topbar-bg: $topbar-bg-color;
+$topbar-bg-color: rgba(50,50,50,0.9);
+$topbar-bg: rgba(50,50,50,0.9);
 
 // Height and margin
 // $topbar-height: 45px;
 // $topbar-margin-bottom: 0;
 
 // Controlling the styles for the title in the top bar
-// $topbar-title-weight: $font-weight-normal;
+//$topbar-title-weight: $font-weight-bold;
 // $topbar-title-font-size: rem-calc(17);
 
 // Style the top bar dropdown elements
@@ -1392,7 +1392,7 @@ $input-focus-border-color: scale-color(#f05b47, $lightness: -40%);
 // $topbar-link-bg: $topbar-bg;
 // $topbar-link-bg-color-hover: $charcoal;
 // $topbar-link-bg-hover: #272727;
-// $topbar-link-bg-active: $primary-color;
+$topbar-link-bg-active: #0dc9f7;
 // $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
 // $topbar-link-font-family: $body-font-family;
 // $topbar-link-text-transform: none;

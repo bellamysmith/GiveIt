@@ -21,6 +21,26 @@ header{
 	margin: 10px auto;
 	padding: 20px;
 
+	background-color: #FFF;
+
+
+}
+.sign-up-header{
+	position: absolute;
+	top: 20px;
+	left: 50px;
+	width: 500px;
+	height: 120px;
+	h2{text-align: left;
+		padding-top: 40px;}
+	img{
+		width: 150px;
+		height: 200px;
+		position: relative;
+		left: 300px;
+		top: -150px;
+		fill: #333;
+	}
 }
 .featured-nonprofit{
 	background-color: #FFF;

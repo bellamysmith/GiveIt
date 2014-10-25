@@ -10,6 +10,11 @@
 	border: 2px solid #f05b47;
 
 }
+.nonprofit-show-page{
+	background-color: #505050;
+
+}
+
 #edit-nonprofit-header{
 	background-color: rgba(255,255,255,0);
 	height: 200px;	
@@ -19,25 +24,59 @@
 		top: 0px;
 	}
 }
-.nonprofit-info{
-	border: 1px solid black;
-	width: 900px;
+.np-show-container{
+	width: 70%;
 	margin: 0 auto;
+}
+.nonprofit-info{
+
+	display: none;
+	background-color: #FFF;
+	margin: 0 auto;
+	h6{
+		background-color: #0dc9f7;
+		padding: 10px;
+		text-align: center;
+		color: #FFF;
+		font-weight: bold;
+	}
 	div{
 		margin: 10px auto;
 	}
 }
 .donations{
-	
-	margin: 10px auto;
-	border: 1px solid black;
+	display: none;
+	background-color: #FFF;
+	width: 74%;
+	height: 400px;
+	padding: 0px;
+	h6{
+		background-color: #f05b47;
+		padding: 10px;
+		text-align: center;
+		margin: 0;
+	}
+
 }
 .topics{
-	border: 1px solid black;
-	margin: 10px auto;
+	display:none;
+	h6{
+		background-color: #bff073;
+		padding: 10px;
+		text-align: center;
+		margin: 0;
+	}
+	background-color: #FFF;
+	position: relative;
+	left: 5px;
+	padding: 0px;
+	h7{
+		padding: 20px;
+	}
 }
 #nonprofit-show-header{
-	height: 200px;
+	background-color: #e0e0e0;
+	height: 100px;
 }
 #edit-nonprofit-link{
 	position: relative;
@@ -49,14 +88,17 @@
 	margin-top: 20px;
 	font-size: 40px;
 	position: relative;
-	margin-bottom: 50px;
+	top: -50px;
 	display: none;
+	background-color: #FFF;
 	
 }
 
 #nonprofit-tax-id{
 	width: 300px;
-	margin: 0 auto;
+	margin: 10px auto;
+	position: relative;
+	top: 20px;
 }
 .nonprofit-sign-up{
 	width: 600px;

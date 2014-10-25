@@ -2,20 +2,15 @@
     <% if user_signed_in? %>
       <%= render '/nav' %>
     <% elsif nonprofit_signed_in? %>
-      <%= render '/npnav' %>
+      <%= render '/np_nav' %>
     <% end %>
   <header class="home-header">
-    <% if !user_signed_in? %>
+    <% if !user_signed_in? && !nonprofit_signed_in? %>
       <%= link_to "Sign In", new_user_session_path %> 
       <%= link_to "Sign Up", new_user_registration_path %>
       <%= link_to "Non-Profits Click Here", new_nonprofit_registration_path %>
     <% end %>
   
-    <% if nonprofit_signed_in? %>
-      <%= current_nonprofit.name %>
-      <%= link_to "EDIT YOUR NON PROFIT", nonprofit_path(current_nonprofit) %>
-      <%= link_to "Sign Out", destroy_nonprofit_session_path, method: :delete %>
-    <% end %>
 
     <h1>This is your home page!</h1>
     <h4>Here you can see a featured non-profit and a list of non-profits you may be interested in based on your interests</h4>

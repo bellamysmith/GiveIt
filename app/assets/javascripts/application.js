@@ -19,10 +19,13 @@
 $(function(){ $(document).foundation(); });
 $('button').select('span').html("Donate");
 
+
 $(document).ready(function(){
 
 	
-
+  $('.nonprofit-info').fadeIn();
+  $('.donations').delay(100).fadeIn();
+  $('.topics').delay(300).fadeIn();
 
 	$('#nonprofit-tax-id').focusout(function(){
 		var ein = $('#nonprofit-tax-id')[0].value;
@@ -37,7 +40,11 @@ $(document).ready(function(){
 		});
 
 	});
+
+ 
+
 })
+
 
 	
 var url = document.location.pathname +'.json';

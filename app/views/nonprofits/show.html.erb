@@ -1,27 +1,30 @@
-<%= render '/np-nav' %>
+<body class="nonprofit-show-page">
+<%= render '/np_nav' %>
 <p id="notice"><%= notice %></p>
 
 <header id="nonprofit-show-header">
-	<h2>THIS IS YOUR NONPROFIT DASHBOARD WHERE YOU CAN SEE YOUR DONATIONS AND THE USERS WHO DONATE</h2>
+	<h2>Give By One</h2>
 </header>
+<main class="np-show-container">
 <div class="nonprofit-info">
+<h6><%= @nonprofit.name %>'s Account Info</h6>
 <div class ="row">
 	<div class="large-4 columns">
- 		<strong>Name:</strong>
-  		<%= @nonprofit.name %>
+ 		<p align="left"><strong>Name:</strong>
+  		<%= @nonprofit.name %></p>
 	</div>
 	<div class="large-4 columns">
-  		<strong>Website:</strong>
-  		<%= @nonprofit.website %>
+  		<p align="center"><strong>Website:</strong>
+  		<%= @nonprofit.website %></p>
 	</div>
 	<div class="large-4 columns">
-  		<strong>Phone:</strong>
-  		<%= @nonprofit.phone %>
+  		<p align="right"><strong>Phone:</strong>
+  		<%= @nonprofit.phone %></p>
 	</div>
 
 </div>
 <div class="row">
-	<div class="large-11 columns" id="description">
+	<div class="large-12 columns" id="description">
 		<p><%= @nonprofit.description %></p>
 	</div>
 </div>
@@ -31,15 +34,16 @@
 
 </div>
 <div class="row">
-<div class="donations large-7 columns">
+<div class="donations large-8 columns">
+	<h6>Donations</h6>
 	<p>Total Donations: <%= @donation_count %></p>
 </div>
 
 <div class="topics large-3 columns">
-	<h2>Topics:</h2>
-	<h6>Main Topic:</h6>
+	<h6>Topics:</h6>
+	<h7>Main Topic:</h7>
 		<p align="center"><%= @nonprofit.main %></p>
-	<h6>All topics</h6>	
+	<h7>All topics</h7>	
 	<% @nonprofit.topics.distinct.each do |a| %>
 		<p align="center"><%= a.topic %></p>
 	<% end %>
@@ -47,3 +51,5 @@
 </div>
  |
 <%= link_to 'Back', nonprofits_path %>
+</main>
+</body>

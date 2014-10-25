@@ -1,6 +1,7 @@
 <% if resource == @user %>
-<header>
-<h2 align="center">Sign up</h2>
+<header class="sign-up-header">
+<h2 align="center">Give By One</h2>
+<img></img>
 </header>
 
 <div class="sign-up-form">
@@ -46,6 +47,7 @@
 	<h2>Sign Up</h2>
 	<h5>Enter Your EIN so we can verify your nonprofit status:</h5>
 	<input id="nonprofit-tax-id" type="text"></input>
+	<p align="center"><br>Verify</p>
 		<div class="stripe-sign-in">
 		<%- if devise_mapping.omniauthable? %>
 	  		<%- resource_class.omniauth_providers.each do |provider| %>
