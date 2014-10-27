@@ -5,13 +5,13 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     
-    if user_signed_in? && current_user.nonprofits.count != 0;
+    if user_signed_in? && current_user.interested.count != 0
       @user = current_user
       @featured = @user.interested.sample
       @nonprofits = @user.interested.shuffle
     else
       @featured = Nonprofit.first
-      @nonprofits = Nonprofit.all.limit(3).shuffle
+      @nonprofits = Nonprofit.all.shuffle
     end
 
 
@@ -20,22 +20,25 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @topics = []
-    @topics_by_num = []
-    @user.nonprofits.each do |n|
-      @topics << n.main 
-    end
+    if User.find(params[:id]) == current_user
+      @topics = []
+      @topics_by_num = []
+      @user.nonprofits.each do |n|
+        @topics << n.main 
+      end
 
-    @topics.each do |a|
-      @topics_by_num << { 'topic' => a, 'donations' => @topics.count(a)} if !@topics_by_num.include?({  'topic' => a, 'donations' => @topics.count(a)})
-    end
+      @topics.each do |a|
+        @topics_by_num << { 'topic' => a, 'donations' => @topics.count(a)} if !@topics_by_num.include?({  'topic' => a, 'donations' => @topics.count(a)})
+      end
 
-    respond_to do |format|
-        format.html {@user = User.find(params[:id])}
-        format.json { render :json => {data: @topics_by_num} }
+      respond_to do |format|
+          format.html {@user = User.find(params[:id])}
+          format.json { render :json => {data: @topics_by_num} }
 
-    end
-
+      end
+    else
+       redirect_to root_path
+    end 
   end
 
   # GET /users/new

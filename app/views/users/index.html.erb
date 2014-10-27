@@ -1,61 +1,29 @@
-<body class="home-page">
-    <% if user_signed_in? %>
-      <%= render '/nav' %>
-    <% elsif nonprofit_signed_in? %>
-      <%= render '/np_nav' %>
-    <% end %>
-  <header class="home-header">
-    <% if !user_signed_in? && !nonprofit_signed_in? %>
-      <%= link_to "Sign In", new_user_session_path %> 
-      <%= link_to "Sign Up", new_user_registration_path %>
-      <%= link_to "Non-Profits Click Here", new_nonprofit_registration_path %>
-    <% end %>
-  
-
-    <h1>This is your home page!</h1>
-    <h4>Here you can see a featured non-profit and a list of non-profits you may be interested in based on your interests</h4>
-  </header>
-
-  <div class="main">
-    <div class="featured-nonprofit">
-      <div class="row">
-        <h2 class="large-10 columns">Featured:</h2>
-        <h4 class="nonprofit-topic large-2 columns"><%= @featured.main %></h4>
-      </div>
-      <div class="row">
-        <div class="large-7 columns">
-         
-        <h3 class="nonprofit-title"><%= link_to @featured.name, profile_path(@featured) %></h3>
-        
-      
-        <a class="nonprofit-website" href="<%=@featured.website %>"><%= @featured.website %></a>
-        <h4 class="nonprofit-description"><%= @featured.description %></h4>
-      </div>
-        <img id='demo' src='http://api.page2images.com/directlink?p2i_url=<%= @featured.website %>&p2i_key=c834695e593e7719' class="large-4 columns">
-      </div>
-      
-
-<script> var p2i=new page2images(); p2i.thumbnail('demo');</script>
+<body class="root-page">
   <% if user_signed_in? %>
-      <%= render partial: "pay", locals: {nonprofit: @featured} %>
-  <% end %>    
-     
-    </div>
-    <div class="row">
-    <% @nonprofits.each do |a| %>
-    <div class="nonprofit large-4 columns">
-      <p class="nonprofit-topic"><%= a.main %></p>
-      <h6 class="nonprofit-title"><%= link_to a.name, profile_path(a) %></h6>
-      <h6 class="nonprofit-description"><%= a.description%></h6>
-    <% if user_signed_in? %>
-      <%= render partial: "pay", locals: {nonprofit: @featured} %>
-    <% end %> 
-      <%= link_to "See More", nonprofit_path(a) %>
-      
-    </div>
-    <% end %>
-  </div>
+    <%= render '/nav' %>
+  <% elsif nonprofit_signed_in? %>
+    <%= rener '/np_nav' %>
+  <% end %>
 
-  </div>
+<header class="root-header">
+  <img src="assets/dollar-bills.png" align="center">
+  <h2>Give One to One </h2>
+  <h5>Give $1 to One Non-profit with just a click, as many times as you want</h5>
+    <% if !user_signed_in? && !nonprofit_signed_in? %>
+    <%= link_to "Sign Up", new_user_registration_path %>
+    <%= link_to "Sign In", new_user_session_path %>
+    <%= link_to "Nonprofits Click Here", new_nonprofit_registration_path %>
+  <% end %>
+</header>
+<div class="root-about">
+  <h4>By curating a list of nonprofits, based specifically on your personal interests, Give One to One aims to make giving to a nonprofit you believe in, as easy as pressing a button. And hey, its just a dollar!</h4>
+</div>
+
+
+
+
+
+
+
 
 </body>

@@ -137,7 +137,15 @@
 		color: #505050;
 	}
 }
-.edit-nonprofit-page{
-
-
+.home-header{
+	a{
+		postiion: relative;
+		top: -10px;
+	}
+	height: 50px;
+	background-color: transparent;
+}
+.nonprofit-container{
+	width: 91.5%;
+	margin: 0 auto;
 }

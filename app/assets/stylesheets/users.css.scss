@@ -44,29 +44,32 @@ header{
 }
 .featured-nonprofit{
 	background-color: #FFF;
-	padding: 20px;
 	h1, h2, h3, h4, p {font-family: 'AftaSansThin-Regular';}
-	width: 80%;
+	h2{
+		background-color: #4eafcd;
+		padding: 0px;
+	}
+	width: 87%;
+	height: 500px;
 	margin: 0 auto;
 	button{
 		margin: 10px 40%;
 		width: 20%;
 	}
-	.nonprofit-topic{
-		position: relative;
-		
-		
-	}
 	img{
-		position: relative;
-		right: 30px;
-		width: 300px;
-		height: 200px;
+		position: absolute;
+		right: 100px;
+		top: 150px;
+		width: 420px;
+		height: 300px;
 	}
 }
 .nonprofit{
-	background-color: #FFF;
 
+	background-color: #FFF;
+	margin-right: 10px;
+	margin-left: 10px;
+	width: 400px;
 	height: 300px;	
 	margin-top: 10px;
 	padding: 20px;
@@ -97,14 +100,26 @@ header{
 	background-color: #FFF;
 	padding: 20px;
 }
+
+.user-show-page{
+	background-color: #4EAFCD;
+}
 .user-show-header{
-	height: 200px;
+	height: 100px;
+	width: 93.1%;
+	position: relative;
+	left: 40px;
+	margin: 0px;
+	margin-bottom: 10px;
+	margin-top: 10px;
 }
 .user-donations{
+	padding: 20px;
 	height: 500px;
 	position: relative;
 	left: 40px;
 	background-color: #FFF;
+	border: 8px solid #469DB8;
 	svg{
 		position: relative;
 		left: 16%;
@@ -116,14 +131,59 @@ header{
 	padding: 20px;
 	postion: relative;
 	left: 40px;
+	max-height: 350px;
+	overflow: scroll;
 	background-color: #FFF;
 	margin-right: 20px;
+	border: 8px solid #469DB8;
+	input[type="submit"]{
+		background-color: #f05b47;
+	}
 	a{
 		position: relative;
 		left: 90%;
 	}
 
 }
+.user-feed{
+	border: 8px solid #469DB8;
+	background-color: lighten(#469DB8, 20%);
+	margin: 10px auto;
+	position: relative;
+	left: 40px;
+	top: -150px;
+	padding: 20px;
+	
+	.feed-item{
+		background-color: #FFF;
+		padding: 10px;
+		.stripe-button-el {
+			width: 200px;
+		}
+		
+	}
+}
 
-
-
+.root-header{
+	width: 100%;
+	height: 600px;
+	background-color: #505050;
+	margin: 0;
+	text-align: center;
+	h2, h5,a {color: #FFF}
+	img{
+		width: 300px;
+		height: 300px;
+	}
+	a{
+		position: relative;
+		right: 0%;
+		top: 150px;
+		color: #f05b47;
+	}
+}
+.root-about{
+	width: 500px;
+	margin: 100px auto;
+	text-align: center;
+}

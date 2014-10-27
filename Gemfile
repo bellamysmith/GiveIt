@@ -34,6 +34,8 @@ group :development, :test do
 end
 
 gem 'rails_12factor', group: :production
+gem 'unicorn'
+gem 'foreman'
 
 gem 'omniauth-stripe-connect'
 # Use ActiveModel has_secure_password

@@ -1,26 +1,37 @@
-
-	<% if user_signed_in? %>
-      <%= render '/nav' %>
-    <% end %>
+<body class="user-show-page">
+<% if user_signed_in? %>
+  <%= render '/nav' %>
+<% end %>
 <header class="user-show-header">
 
-	<h2> This is your dashboard where you can view your giving history, change account information, and update your interests list</h2>
+	<h2>Giving Dashboard</h2>
 </header>
 
 
 <div class="user-topics large-7 columns">
+	<a><%= link_to "Add Topics", edit_user_path(@user) %></a>
 	<h3> Your Topics</h3>
 	<%= form_for @user do |u| %>
 		<% @user.topics.each do |a| %>
 		<%= u.submit a.topic, class: "button"%> 
 		<% end %>
 	<% end %>
-	<a><%= link_to "Add Topics", edit_user_path(@user) %></a>
+	
 </div>
 
 <div class="user-donations large-4 columns">
 	<h3>YOUR DONATIONS:</h3>
-	<%= @user.donations.count %>
+	<p>Total Donations: <%= @user.donations.count %></p>
+</div>
+
+<div class="user-feed large-7 columns">
+	<% @user.interested.each do |n| %>
+	  <div class="feed-item">
+	  	<h6><%= n.name %></h6>
+	  	<p><%= n.description %><p>
+	  <%= render partial: "pay", locals: {nonprofit: n} %>
+	</div>
+	<% end %>
 </div>
 
 
@@ -42,5 +53,5 @@ body {
 
 </style>
 
-
+</body>
 

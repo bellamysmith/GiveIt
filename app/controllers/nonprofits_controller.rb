@@ -4,7 +4,8 @@ class NonprofitsController < ApplicationController
   # GET /nonprofits
   # GET /nonprofits.json
   def index
-    @nonprofits = Nonprofit.order(:name).where("name like ?", "%#{params[:term]}%")  
+    @nonprofits = Nonprofit.all
+    @featured = Nonprofit.all.sample  
   end
 
   # GET /nonprofits/1
@@ -13,7 +14,7 @@ class NonprofitsController < ApplicationController
     if current_nonprofit == @nonprofit
       @donation_count =  Donation.where(nonprofit: @nonprofit).count
     else
-      redirect_to profile(@nonprofit)
+      redirect_to profile_path(@nonprofit)
     end
   end
 
@@ -61,9 +62,8 @@ class NonprofitsController < ApplicationController
       @nonprofit.main_topic = params[:nonprofit][:main_topic].to_i
 
       if @nonprofit.update(nonprofit_params)
-        format.html { redirect_to @nonprofit, notice: 'Nonprofit was successfully created!' }
+        format.html { redirect_to nonprofit_path(@nonprofit), notice: 'Nonprofit was successfully created!' }
         format.json { render :show, status: :ok, location: @nonprofit }
-
       else
         format.html { render :edit }
         format.json { render json: @nonprofit.errors, status: :unprocessable_entity }
