@@ -6,7 +6,7 @@
   <% end %>
 
 <header class="root-header">
-  <img src="assets/dollar-bills.png" align="center">
+  <img src=<%= asset_path "dollar-bills.png"%>>
   <h2>Give One to One </h2>
   <h5>Give $1 to One Non-profit with just a click, as many times as you want</h5>
     <% if !user_signed_in? && !nonprofit_signed_in? %>
