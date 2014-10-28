@@ -11,11 +11,10 @@
 <div class="user-topics large-7 columns">
 	<a><%= link_to "Add Topics", edit_user_path(@user) %></a>
 	<h3> Your Topics</h3>
-	<%= form_for @user do |u| %>
-		<% @user.topics.each do |a| %>
-		<%= u.submit a.topic, class: "button"%> 
-		<% end %>
+	<% @user.topics.each do |a| %>
+		<p class="button"><%= a.topic %></p>
 	<% end %>
+
 	
 </div>
 
@@ -25,20 +24,21 @@
 </div>
 
 <div class="user-feed large-7 columns">
-	<% @user.interested.each do |n| %>
+	<% @user.interested.shuffle.each do |n| %>
 	  <div class="feed-item">
-	  	<h6><%= n.name %></h6>
+	  	<h6 class="topic" align="right"><%= n.main %></h6>
+	  	<h6><%= link_to n.name, profile_path(n) %></h6>
+	  	<p class="where">Where will your dollar go?</p>
 	  	<p><%= n.description %><p>
-	  <%= render partial: "pay", locals: {nonprofit: n} %>
-	</div>
+	  	<div class="pay">	
+	  		<%= render partial: "pay", locals: {nonprofit: n} %>
+	  	</div>
+	  </div>
 	<% end %>
 </div>
 
 
-<div class="large-12 columns">
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
-</div>
+
 
 
 <style>

@@ -92,7 +92,8 @@ header{
 	.nonprofit-topic{
 		color: rgba(0,0,0,0.5)
 	}
-	button{
+	.stripe-button-el{
+		display: none;
 		position: relative;
 		top: 0px;
 		margin: 0 auto;
@@ -144,7 +145,7 @@ header{
 	background-color: #FFF;
 	margin-right: 20px;
 	border: 8px solid #469DB8;
-	input[type="submit"]{
+	.button{
 		background-color: #f05b47;
 	}
 	a{
@@ -154,6 +155,7 @@ header{
 
 }
 .user-feed{
+	display: none;
 	border: 8px solid #469DB8;
 	background-color: lighten(#469DB8, 20%);
 	margin: 10px auto;
@@ -161,12 +163,54 @@ header{
 	left: 40px;
 	top: -150px;
 	padding: 20px;
+	max-height: 1000px;
+	overflow: scroll;
 	
 	.feed-item{
+
 		background-color: #FFF;
-		padding: 10px;
+		margin: 10px;
+	
+		h6{
+			padding-left: 10px;
+			font-weight: bold;
+			position: relative;
+			top: -20px;
+		}
+		p{
+			margin-left: 40px;
+			margin-right: 40px;
+			margin-bottom: 0px;
+			position: relative;
+			top: -20px;
+
+		}
+		.where{
+			margin-left: 10px;
+			color: rgba(0,0,0,0.5);
+		}
+		.topic{
+			color: rgba(0,0,0,0.5);
+			position: relative; 
+			top: 0px;
+			padding-right: 10px;
+			padding-top: 10px;
+		}
 		.stripe-button-el {
-			width: 200px;
+			width: 25%;
+			position: relative;
+			left: 35%;
+			margin-bottom: 5px;
+
+		}
+		.pay{
+			background-color: #e0e0e0;
+			height: 50px;
+			margin: 0; 
+			padding-top: 5px;
+			.stripe-button-el{
+				display: none;
+			}
 		}
 		
 	}
@@ -194,9 +238,9 @@ header{
 	}
 }
 .root-about{
-	height: 450px;
+	min-height: 450px;
 	h4{
-		width: 500px;
+		max-width: 500px;
 		margin: 0 auto;
 		position: relative;
 		top: 65px;
@@ -229,7 +273,7 @@ header{
 	padding: 50px;
 	a{ color: #FFF;}
 }
-	.link-container{
+.link-container{
 	background-color: #505050;
 	width: 100%;
 	height: 50px;

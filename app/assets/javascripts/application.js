@@ -21,7 +21,8 @@ $('button').select('span').html("Donate");
 
 
 $(document).ready(function(){
-
+  $('.stripe-button-el').fadeIn();
+  $('.user-feed').delay(100).fadeIn();
 	
   $('.nonprofit-info').fadeIn();
   $('.donations').delay(100).fadeIn();
