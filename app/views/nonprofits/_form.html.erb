@@ -33,7 +33,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :description, "Description: (A sentance or two describing your nonprofit to entice the user to donate)" %><br>
+    <%= f.label :description, "Description: (A sentance or two describing your nonprofit to entice the user to donate. 255 Characters Max.)" %><br>
     <%= f.text_area :description %>
   </div>
   <div class="field">
@@ -42,7 +42,7 @@
   </div>
   <div class="field">
     <p>Choose the topics that your non-profit covers. If you do not choose at least one topic, your non-profit will not be featured on user pages (Maximum 5)</p>
-    <%= f.label :topic %>
+    <%= f.label :topic, "Hold Ctrl/Cmd to select multiple topics" %>
     <%= f.select :topic_ids, Topic.all.collect {|x| [x.topic, x.id]}, {}, :multiple => true, class: "topic-select" %>
 
   </div>

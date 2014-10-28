@@ -25,21 +25,29 @@ header{
 
 
 }
+.user-sign-up-page{
+	background-color: #4eafcd;
+}
 .sign-up-header{
+	background-color: transparent;
 	position: absolute;
-	top: 20px;
-	left: 50px;
-	width: 500px;
-	height: 120px;
-	h2{text-align: left;
-		padding-top: 40px;}
+	
+	width: 550px;
+	h2{text-align: right;
+		position: relative;
+		top: -80px;
+		color: #FFF;
+		font-size: 50px;
+		left: -200px;
+		color: #e0e0e0;}
 	img{
 		width: 150px;
 		height: 200px;
 		position: relative;
-		left: 300px;
-		top: -150px;
-		fill: #333;
+		z-index: -2;
+		left: 13%;
+		top: -40px;
+		
 	}
 }
 .featured-nonprofit{
@@ -165,9 +173,12 @@ header{
 }
 
 .root-header{
+	background-color: #505050;
+	position: fixed;
+	top: 0px;
+	z-index: -100;
 	width: 100%;
 	height: 600px;
-	background-color: #505050;
 	margin: 0;
 	text-align: center;
 	h2, h5,a {color: #FFF}
@@ -179,11 +190,50 @@ header{
 		position: relative;
 		right: 0%;
 		top: 150px;
-		color: #f05b47;
+		color: #469DB8;
 	}
 }
 .root-about{
-	width: 500px;
+	height: 450px;
+	h4{
+		width: 500px;
+		margin: 0 auto;
+		position: relative;
+		top: 65px;
+	}
 	margin: 100px auto;
 	text-align: center;
+	background-color: #e0e0e0;
+	position: relative;
+	top: 500px;
+
+
+}
+.nonprofit-index-footer{
+	height: 100px;
+	text-align: center;
+	padding: 20px;
+	background-color: rgba(0,0,0,0.5);
+	h6{
+		color: rgba(255,255,255,0.6);
+	}
+	position: relative;
+	top: 200px;
+}
+.root-footer{
+	position: relative;
+	top: 300px;
+	background-color: #4eafcd;
+	height: 200px;
+	text-align: center;
+	padding: 50px;
+	a{ color: #FFF;}
+}
+	.link-container{
+	background-color: #505050;
+	width: 100%;
+	height: 50px;
+	position: relative;
+	top: -50px;
+	padding-top: 15px;
 }

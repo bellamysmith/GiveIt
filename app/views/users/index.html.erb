@@ -2,21 +2,27 @@
   <% if user_signed_in? %>
     <%= render '/nav' %>
   <% elsif nonprofit_signed_in? %>
-    <%= rener '/np_nav' %>
+    <%= render '/np_nav' %>
   <% end %>
 
 <header class="root-header">
   <img src=<%= asset_path "dollar-bills.png"%>>
   <h2>Give One to One </h2>
   <h5>Give $1 to One Non-profit with just a click, as many times as you want</h5>
-    <% if !user_signed_in? && !nonprofit_signed_in? %>
-    <%= link_to "Sign Up", new_user_registration_path %>
-    <%= link_to "Sign In", new_user_session_path %>
-    <%= link_to "Nonprofits Click Here", new_nonprofit_registration_path %>
-  <% end %>
+
 </header>
 <div class="root-about">
+  <div class="link-container">
+      <% if !user_signed_in? && !nonprofit_signed_in? %> 
+    <%= link_to "Sign Up", new_user_registration_path %> |
+    <%= link_to "Sign In", new_user_session_path %> |
+    <%= link_to "Nonprofits Click Here", new_nonprofit_registration_path %> |
+  <% end %>
+</div>
   <h4>By curating a list of nonprofits, based specifically on your personal interests, Give One to One aims to make giving to a nonprofit you believe in, as easy as pressing a button. And hey, its just a dollar!</h4>
+</div>
+<div class="root-footer">
+  <a href="mailto:bellamysmith1@gmail.com">Have Questions? Contact Us!</a>
 </div>
 
 

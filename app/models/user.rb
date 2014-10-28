@@ -26,4 +26,12 @@ class User < ActiveRecord::Base
 
   end      
 
+  #NORMALIZE NAME
+  def name
+    return (self.first_name.capitalize + " " + self.last_name.capitalize)
+  end
+
+
+
+
 end

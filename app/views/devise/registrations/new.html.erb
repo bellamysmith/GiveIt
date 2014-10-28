@@ -1,10 +1,13 @@
+<body class= "user-sign-up-page">
 <% if resource == @user %>
 <header class="sign-up-header">
+<img src=<%= asset_path 'dollar-bills.png' %>>
 <h2 align="center">Give By One</h2>
-<img></img>
+
 </header>
 
 <div class="sign-up-form">
+	<h3 align="center">Sign-Up!</h3>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
@@ -23,7 +26,7 @@
 
 <%= render "devise/shared/links" %>
 </div>
-
+</body>
 
 
 
@@ -35,8 +38,23 @@
 <% elsif resource == @nonprofit %>
 <body class="nonprofit-registration-page">
 <div class="nonprofit-registration-header">
+	<i class="fa fa-usd fa-5x"></i>
+	<!-- <img src=<%= asset_path "dollar-bills.png"%>> -->
 	<h2>Give By One is for Nonprofits</h2>
 	<h5>We want to help you raise money by easily connecting small-scale doners and the nonprofits they are interested in.</h5>
+
+</div>
+<div class="how-it-works">
+	
+	<h2>How It Works</h2>
+	<div class="container">
+	<p>For nonprofits, Give One To One is an easy and low-maintenance way to engage and access new users, and new donors. We give users a list of nonprofits that relate to their interests (your nonprofit) and give them a "donate" button which allows them to easily donate $1 to the nonprofit(s) of their choice, as many times as they want. You can even see your donation history, and search other nonprofits like yours.</p>
+	<p> Using your Stripe account, Give One allows users to directly donate into your account (we don't take a cut!) by entering their credit card information</p>
+	<p>Don't have a Stripe account? Sign up now!</p>
+	</div>
+</div>
+<div class="nonprofit-index-footer">
+	<h6><a href="mailto:bellamysmith1@gmail.com">Have Questions? Contact Us!</a></h6>
 </div>
 
 
