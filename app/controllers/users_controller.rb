@@ -4,14 +4,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    
-    if user_signed_in? && current_user.interested.count != 0
-      @user = current_user
-      @featured = @user.interested.sample
-      @nonprofits = @user.interested.shuffle
-    else
-      @featured = Nonprofit.first
-      @nonprofits = Nonprofit.all.shuffle
+    if user_signed_in?
+      redirect_to user_path(current_user)
     end
 
 
@@ -20,7 +14,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    if User.find(params[:id]) == current_user
+    if user_signed_in? && User.find(params[:id]) == current_user
       @topics = []
       @topics_by_num = []
       @user.nonprofits.each do |n|
@@ -37,7 +31,7 @@ class UsersController < ApplicationController
 
       end
     else
-       redirect_to root_path
+       redirect_to users_path
     end 
   end
 
