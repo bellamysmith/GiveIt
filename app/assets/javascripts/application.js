@@ -77,7 +77,7 @@ var svg1 = d3.select(".donations").append("svg")
 d3.tsv($.get(url, function(data) {
   console.log(data);
   x.domain(data.data.map(function(d) { console.log(d.date);return d.date; }));
-  y.domain([0, d3.max(data.data, function(d) { console.log(d.donations);return d.donations; })]);
+  y.domain([0, 3+d3.max(data.data, function(d) { console.log(d.donations);return d.donations; })]);
 
   svg1.append("g")
       .attr("class", "x axis")

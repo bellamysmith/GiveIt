@@ -1,6 +1,9 @@
 
 
 <body class="nonprofit-show-page">
+	<% if nonprofit_signed_in? %>
+  <%= render '/nav' %>
+<% end %>
 
 <p id="notice"><%= notice %></p>
 
@@ -53,8 +56,7 @@
 </div>
 </div>
 </div>
- |
-<%= link_to 'Back', nonprofits_path %>
+
 </main>
 <div class="root-footer">
   <a href="mailto:bellamysmith1@gmail.com">Have Questions? Contact Us!</a>

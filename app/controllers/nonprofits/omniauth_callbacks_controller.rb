@@ -11,7 +11,7 @@ class Nonprofits::OmniauthCallbacksController < Devise::OmniauthCallbacksControl
       redirect_to nonprofit_path(@nonprofit)
     else
       session["devise.stripe_data"] = request.env["omniauth.auth"]
-      redirect_to new_nonprofit_registration_url
+      redirect_to new_nonprofit_registration_path
     end
 
 
