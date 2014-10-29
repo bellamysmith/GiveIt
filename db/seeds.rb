@@ -55,7 +55,7 @@ Nonprofit.create([
 		name: "No Oauth",
 		password: "anotherexample",
 		oauth: "example2",
-		main_topic: 9,
+		main_topic: Topic.last.id,
 		website: "http://miamifoundation.com",
 		description: "This is a sample non profit, you can't really do anything with it, but I wanted to give it an example description"
 
@@ -66,5 +66,5 @@ Nonprofit.create([
 		oauth: "nooauth",
 		description: "We work for Women's equality accross the globe, your dollar will go to microloans for women in Africa",
 		website: "www.generalassemb.ly",
-		main_topic: 6}	
+		main_topic: Topic.last.id}	
 		])
