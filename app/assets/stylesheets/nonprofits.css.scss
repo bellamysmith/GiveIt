@@ -183,8 +183,18 @@
 	background-color: transparent;
 }
 .nonprofit-container{
-	width: 91.5%;
+	.color-title{
+		background-color: #4eafcd;
+		padding: 20px;
+
+	}
+	width: 90%;
 	margin: 0 auto;
+	position: relative;
+	top: 50px;
+	background-color: #F6F7F8;
+	border: 1px solid #e0e0e0;
+
 }
 .how-it-works{
 	width: 100%;

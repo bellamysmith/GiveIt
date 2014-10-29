@@ -52,34 +52,44 @@ header{
 }
 .featured-nonprofit{
 	background-color: #FFF;
-	h1, h2, h3, h4, p {font-family: 'AftaSansThin-Regular';}
+	
 	h2{
 		background-color: #4eafcd;
-		padding: 0px;
+		padding: 10px;
 	}
 	width: 87%;
 	height: 500px;
 	margin: 0 auto;
 	button{
-		margin: 10px 40%;
+		margin: 10px 20%;
 		width: 20%;
+		position: realtive;
+
 	}
 	img{
-		position: absolute;
-		right: 100px;
-		top: 150px;
+		float: right;
+		position: relative;
+		right: 6%;
+		top: 30px;
 		width: 420px;
 		height: 300px;
+		border: 2px solid #e0e0e0;
 	}
-}
-.nonprofit{
+	.padding{
+		padding: 20px;
+		position: relative;
+		top: 50px;
+		margin-left: 50px;
+		background-color: #F6F7F8;
+		width: 50%;
+	}
 
+}
+
+.nonprofit{
+	display: block;
 	background-color: #FFF;
-	margin-right: 10px;
-	margin-left: 10px;
-	width: 400px;
-	height: 300px;	
-	margin-top: 10px;
+	margin: 20px;	
 	padding: 20px;
 	button{
 		position: relative;
@@ -97,7 +107,8 @@ header{
 		position: relative;
 		top: 0px;
 		margin: 0 auto;
-		width: 100%
+		width: 30%;
+		left: 35%;
 	}
 }
 .topic-select{
@@ -288,4 +299,7 @@ header{
 	position: relative;
 	top: -50px;
 	padding-top: 15px;
+}
+.home-page{
+	background-color: lighten(#469db8, 40%);
 }

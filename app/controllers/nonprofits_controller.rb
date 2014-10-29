@@ -4,7 +4,7 @@ class NonprofitsController < ApplicationController
   # GET /nonprofits
   # GET /nonprofits.json
   def index
-    @nonprofits = Nonprofit.all
+    @nonprofits = Nonprofit.all.shuffle
     @featured = Nonprofit.all.sample  
   end
 
@@ -16,8 +16,8 @@ class NonprofitsController < ApplicationController
       
       
      
-    # else
-    #   redirect_to profile_path(@nonprofit)
+    else
+       redirect_to profile_path(@nonprofit)
     end
     @donations = []
       @donations_by_date = []
