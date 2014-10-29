@@ -19,23 +19,10 @@
 
 
 @font-face {
-    font-family: 'aaarghnormal';
-    src: asset-url('aaargh-webfont.eot');
-    src: asset-url('aaargh-webfont.eot?#iefix') format('embedded-opentype'),
-         asset-url('aaargh-webfont.woff2') format('woff2'),
-         asset-url('aaargh-webfont.woff') format('woff'),
-         asset-url('aaargh-webfont.ttf') format('truetype'),
-         asset-url('aaargh-webfont.svg#aaarghnormal') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'AftaSansThin-Regular';
-    src: asset-url('AftaSansThin-Regular.otf');
-    
-    font-weight: normal;
-    font-style: normal;
-
+	font-family: 'Aileron-Regular';
+	src: asset-url('Aileron-Regular.otf');
+	font-weight: normal;
+	font-size: normal;
 }
 @font-face {
 	font-family: 'Lovelo';
@@ -45,7 +32,7 @@
 }
 
 body {
-	font-family: 'Lovelo';
+	font-family: 'Aileron-Regular';
 	background-color: #e0e0e0;
 
 }
