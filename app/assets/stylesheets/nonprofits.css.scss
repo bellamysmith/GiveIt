@@ -29,7 +29,7 @@
 	margin: 0 auto;
 }
 .nonprofit-info{
-
+	height: 300px;
 	display: none;
 	background-color: #FFF;
 	margin: 0 auto;
@@ -43,18 +43,42 @@
 	div{
 		margin: 10px auto;
 	}
+	#description{
+		background-color: rgb(246, 247, 248);
+		padding: 10px;
+		width: 96%;
+		margin: 20px;
+		border: 1px solid #e0e0e0;
+		position: relative;
+		top: -20px;
+	}
+	a{
+		position: relative; 
+		top: -60px;
+	}
 }
 .donations{
 	display: none;
 	background-color: #FFF;
 	width: 74%;
-	height: 400px;
+	max-height: 1000px;
 	padding: 0px;
+	p{
+		font-family: Helvetica;
+	}
 	h6{
 		background-color: #f05b47;
 		padding: 10px;
 		text-align: center;
 		margin: 0;
+	}
+	.donation{
+		padding-left: 30px;
+		padding-right: 30px;
+		background-color: #f6f7f8;
+		margin-right: 20px;
+		margin-left: 20px;
+		border: 1px solid #e0e0e0;
 	}
 
 }
@@ -70,8 +94,8 @@
 	position: relative;
 	left: 5px;
 	padding: 0px;
-	h7{
-		padding: 20px;
+	.topic-body{
+	
 	}
 }
 #nonprofit-show-header{
@@ -88,9 +112,10 @@
 	margin-top: 20px;
 	font-size: 40px;
 	position: relative;
-	top: -50px;
+	top: -70px;
 	display: none;
 	background-color: #FFF;
+	border: 3px solid;
 	
 }
 
@@ -178,4 +203,75 @@
 		margin-top: 50px;
 
 	}
+}
+.profile-page{
+	background-color: darken(#4eafcd, 40%);
+	.nonprofit-block{
+		width: 65%;
+		min-height: 400px;
+		max-height: 1000px;
+		overflow: scroll;
+		position: relative;
+		top: 50px;
+		left: 30%;
+		background-color: rgba(255,255,255,1);
+		.title-head{
+			background-color: #F6F7F8;
+			padding: 30px;
+		}
+		.profile-body{
+			padding-right: 40px;
+			padding-left: 40px;
+			margin-bottom: 40px;
+		}
+		h5{
+			font-weight: bold;
+			margin-top: 15px;
+		}
+		.description{
+			padding-left: 40px;
+		}
+		img{
+			position: relative;
+			top: 20px;
+			left: 18%;
+		}
+		.topic-list{
+			position: relative;
+			top: 30px;
+		}
+
+	}
+	.profile-footer{
+		background-color: #000;
+		position: relative;
+		height: 100px;
+		top: 100px;
+		text-align: center;
+		h6{
+			color: lighten(#505050, 10%);
+			padding-top: 20px;}
+	}
+}
+.bar {
+  fill: #4eafcd;
+}
+
+.bar:hover {
+  fill: #bff073;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
 }

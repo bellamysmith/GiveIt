@@ -12,9 +12,27 @@ class NonprofitsController < ApplicationController
   # GET /nonprofits/1.json
   def show
     if current_nonprofit == @nonprofit
-      @donation_count =  Donation.where(nonprofit: @nonprofit).count
-    else
-      redirect_to profile_path(@nonprofit)
+      @donation_count =  @nonprofit.donations.count
+      
+      
+     
+    # else
+    #   redirect_to profile_path(@nonprofit)
+    end
+    @donations = []
+      @donations_by_date = []
+      @nonprofit.donations.each do |n|
+        @donations << n.created_at.to_date 
+      end
+
+      @donations.each do |a|
+        @donations_by_date << { 'date' => a, 'donations' => @donations.count(a)} if !@donations_by_date.include?({  'date' => a, 'donations' => @donations.count(a)})
+      end
+    
+      
+    respond_to do |format|
+          format.html {@user = Nonprofit.find(params[:id])}
+          format.json { render :json => {data: @donations_by_date.reverse} }
     end
   end
 
@@ -55,6 +73,8 @@ class NonprofitsController < ApplicationController
   # PATCH/PUT /nonprofits/1.json
   def update
     respond_to do |format|
+      #Delete all of the topics to update with new ones
+      @nonprofit.topics.delete_all
       #There is a blank id with the multiple select field, so I have to go through and push them individually into the Nonprofit's topics
       params[:nonprofit][:topic_ids].each do |a|
         if Topic.where(id: a).count > 0

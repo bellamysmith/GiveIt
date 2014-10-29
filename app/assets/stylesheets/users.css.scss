@@ -177,12 +177,20 @@ header{
 			position: relative;
 			top: -20px;
 		}
+		.dollar-tweet{
+			background-color: #f6f7f8;
+			margin-right: 10px;
+			margin-left: 10px;
+			border: 2px solid #e0e0e0;
+			padding-top: 5px;
+			position: relative;
+			top: -20px;
+		}
 		p{
 			margin-left: 40px;
 			margin-right: 40px;
 			margin-bottom: 0px;
 			position: relative;
-			top: -20px;
 
 		}
 		.where{
@@ -200,11 +208,11 @@ header{
 			width: 25%;
 			position: relative;
 			left: 35%;
+			top: -10px;
 			margin-bottom: 5px;
 
 		}
 		.pay{
-			background-color: #e0e0e0;
 			height: 50px;
 			margin: 0; 
 			padding-top: 5px;

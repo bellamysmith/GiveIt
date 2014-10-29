@@ -28,30 +28,15 @@
 	  <div class="feed-item">
 	  	<h6 class="topic" align="right"><%= n.main %></h6>
 	  	<h6><%= link_to n.name, profile_path(n) %></h6>
-	  	<p class="where">Where will your dollar go?</p>
-	  	<p><%= n.description %><p>
+	  	<div class="dollar-tweet">
+	  		<p class="where">Where will your dollar go?</p>
+	  		<p class="item-description"><%= n.description %><p>
+	  	</div>
 	  	<div class="pay">	
 	  		<%= render partial: "pay", locals: {nonprofit: n} %>
 	  	</div>
 	  </div>
 	<% end %>
 </div>
-
-
-
-
-
-<style>
-
-body {
-  font: 10px sans-serif;
-}
-
-.arc path {
-  stroke: #fff;
-}
-
-</style>
-
 </body>
 

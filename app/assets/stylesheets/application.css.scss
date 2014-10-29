@@ -37,9 +37,15 @@
     font-style: normal;
 
 }
+@font-face {
+	font-family: 'Lovelo';
+	src: asset-url('Lovelo_Black.otf');
+	font-weight: normal;
+	font-size: normal;
+}
 
 body {
-	font-family: 'AftaSansThin-Regular';
+	font-family: 'Lovelo';
 	background-color: #e0e0e0;
 
 }

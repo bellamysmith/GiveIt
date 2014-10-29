@@ -1,2 +1,41 @@
-<h1>THIS IS THE PROFILE PAGE</h1>
-<%= @nonprofit.name %>
+<% if nonprofit_signed_in? %>
+	<%= render '/np_nav' %>
+<% elsif user_signed_in? %>
+	<%= render '/nav' %>
+<% end %>
+<body class="profile-page">
+	<a href="/">
+	<header class="sign-up-header">
+		<img src=<%= asset_path 'dollar-bills.png' %>>
+		<h2 align="center">Give By One</h2>
+
+	</header>
+</a>
+<div class="nonprofit-block">
+<div class="title-head">	
+<h1><%= @nonprofit.name %></h1>
+<h4><%= @nonprofit.city.capitalize %>, <%= @nonprofit.state.upcase %></h4>
+<a href=<%= @nonprofit.website %>><%= @nonprofit.website %></a>
+<br>
+</div>
+<div class="profile-body">
+<h5>What will your dollar go toward?</h5>
+<h6 class="description"><%= @nonprofit.description %></h6>
+<div class="row">
+<img id='demo' src='http://api.page2images.com/directlink?p2i_url=<%= @nonprofit.website %>&p2i_key=c834695e593e7719' class="large-8 columns">
+</div>
+<div class="topic-list">
+<h5 align="center" >Main Topic: </h5>
+	<h6 align="center"><%= @nonprofit.main %></h6>
+<h5 align="center">General Topics</h5>
+<h6><% @nonprofit.topics.distinct.each do |t| %>
+	<%= t.topic %>, 
+<% end %>
+</h6>
+</div>
+</div>
+</div>
+<footer class="profile-footer">
+	<h6>Contact Us! We need your feedback!</h6>
+</footer>
+</body>
