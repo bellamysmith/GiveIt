@@ -48,6 +48,6 @@
   </div>
   <div class="actions">
     <%= f.submit "Continue and Finish", class: "button expand"%>
-  
+    <%= link_to "Delete Account", nonprofit_path(@nonprofit), method: :delete %>
   </div>
 <% end %>
