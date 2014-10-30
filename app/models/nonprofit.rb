@@ -17,7 +17,6 @@ class Nonprofit < ActiveRecord::Base
   def self.from_omniauth(auth)
 
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-    binding.pry
     user.email = rand(6).to_s + '@example.com'
     user.password = Devise.friendly_token[0,20]
     user.name = "Unknown" # assuming the user model has a name
