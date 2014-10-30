@@ -236,6 +236,9 @@ header{
 }
 
 .root-header{
+	h2, h5 {
+		font-family: 'Lovelo';
+	}
 	background-color: #505050;
 	position: fixed;
 	top: 0px;
@@ -257,8 +260,10 @@ header{
 	}
 }
 .root-about{
+
 	min-height: 450px;
 	h4{
+		font-family: 'Lovelo';
 		max-width: 500px;
 		margin: 0 auto;
 		position: relative;

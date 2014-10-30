@@ -17,11 +17,13 @@ class Nonprofit < ActiveRecord::Base
   def self.from_omniauth(auth)
 
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    binding.pry
     user.email = rand(6).to_s + '@example.com'
     user.password = Devise.friendly_token[0,20]
     user.name = "Unknown" # assuming the user model has a name
     user.main_topic = Topic.first.id
     user.oauth = auth.credentials.token
+    user.publishable_key = auth.extra.stripe_publishable_key
 
   end
 end

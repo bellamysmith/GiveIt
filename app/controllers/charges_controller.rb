@@ -13,7 +13,7 @@ def create
   )
 
   token = Stripe::Token.create(
-  {:customer => customer.id},
+  {:customer => customer.id, card: params[:stripeToken]},
   Nonprofit.find(params[:nonprof]).oauth # user's access token from the Stripe Connect flow
   )
 
