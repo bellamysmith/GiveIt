@@ -23,7 +23,7 @@ class Nonprofit < ActiveRecord::Base
     user.name = "Unknown" # assuming the user model has a name
     user.main_topic = Topic.first.id
     user.oauth = auth.credentials.token
-    user.publishable_key = auth.extra.stripe_publishable_key
+    user.publishable_key = auth.extra.raw_info.stripe_publishable_key
 
   end
 end
