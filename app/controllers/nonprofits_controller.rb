@@ -16,23 +16,28 @@ class NonprofitsController < ApplicationController
       
       
      
-    else
-       redirect_to profile_path(@nonprofit)
+
+    end
+    dates = []
+    @nonprofit.donations.each do |a|
+      dates << a.created_at.day
     end
     @donations = []
-      @donations_by_date = []
-      @nonprofit.donations.each do |n|
-        @donations << n.created_at.to_date 
+    @donations_by_date = []
+
+      for i in (0..6) 
+        date = Date.today - i
+        @donations << date
       end
 
-      @donations.each do |a|
-        @donations_by_date << { 'date' => a, 'donations' => @donations.count(a)} if !@donations_by_date.include?({  'date' => a, 'donations' => @donations.count(a)})
+      @donations.reverse.each do |a|
+        @donations_by_date << { 'date' => a, 'donations' => dates.count(a.day)} if !@donations_by_date.include?({  'date' => a, 'donations' => @donations.count(a)})
       end
     
       
     respond_to do |format|
           format.html {@user = Nonprofit.find(params[:id])}
-          format.json { render :json => {data: @donations_by_date.reverse} }
+          format.json { render :json => {data: @donations_by_date} }
     end
   end
 
