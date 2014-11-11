@@ -43,28 +43,3 @@ Topic.create([
 	{topic: "Other"},
 	{topic: "Youth"},
 	])
-Nonprofit.create([
-	{email: "example@example.com",
-		name: "Bellamy's Nonprofit",
-		password: "examplenonprofit",
-		main_topic: Topic.first.id,
-		description: "This is a description",
-		website: "www.examplenonprofit.com",
-		oauth: "example"},
-	{email: "another@example.com",
-		name: "No Oauth",
-		password: "anotherexample",
-		oauth: "example2",
-		main_topic: Topic.last.id,
-		website: "http://miamifoundation.com",
-		description: "This is a sample non profit, you can't really do anything with it, but I wanted to give it an example description"
-
-		},
-	{email: "sample@sample.com",
-		name: "Women's Equality",
-		password: "womensequality",
-		oauth: "nooauth",
-		description: "We work for Women's equality accross the globe, your dollar will go to microloans for women in Africa",
-		website: "www.generalassemb.ly",
-		main_topic: Topic.last.id}	
-		])

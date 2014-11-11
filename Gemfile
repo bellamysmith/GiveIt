@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'pry'
 gem 'foundation-rails'
-gem 'stripe'
+gem 'omniauth'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
@@ -37,7 +37,7 @@ gem 'rails_12factor', group: :production
 gem 'unicorn'
 gem 'foreman'
 
-gem 'omniauth-stripe-connect'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

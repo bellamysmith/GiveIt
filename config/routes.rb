@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :nonprofits, :controllers => { :registrations => "nonprofits/registrations", :omniauth_callbacks => "nonprofits/omniauth_callbacks"}
+  devise_for :nonprofits, :controllers => { :registrations => "nonprofits/registrations"}
   devise_for :users, :controllers => { :registrations => "users/registrations" }
   root 'users#index'
   resources :nonprofits
-  resources :charges
+ 
 
   resources :users
   get '/nonprofits/:id/profile' => 'nonprofits#profile', as: :profile

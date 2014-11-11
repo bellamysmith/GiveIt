@@ -43,7 +43,6 @@ class NonprofitsController < ApplicationController
 
   # GET /nonprofits/new
   def new
-    redirect_to new_nonprofit_registration_path
     @nonprofit = Nonprofit.new
   end
 
@@ -62,7 +61,14 @@ class NonprofitsController < ApplicationController
   # POST /nonprofits.json
   def create
     @nonprofit = Nonprofit.new(nonprofit_params)
-
+      #There is a blank id with the multiple select field, so I have to go through and push them individually into the Nonprofit's topics
+      params[:nonprofit][:topic_ids].each do |a|
+        if Topic.where(id: a).count > 0
+          @nonprofit.topics << Topic.find(a)
+        end
+      end
+      #main topic param needs to be changed to an integer:
+      @nonprofit.main_topic = params[:nonprofit][:main_topic].to_i
     respond_to do |format|
       if @nonprofit.save
         format.html { redirect_to @nonprofit, notice: 'Nonprofit was successfully created.' }

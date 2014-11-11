@@ -6,8 +6,11 @@ class CreateNonprofits < ActiveRecord::Migration
       t.string :city
       t.string :state
       t.string :phone
-      t.string :description
-      t.string :oauth
+      t.text :description
+      t.string :main_topic
+      t.string :uuid
+      t.string :ein
+      t.string :logo
 
       t.timestamps
     end

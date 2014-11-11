@@ -21,30 +21,42 @@ $('button').select('span').html("Donate");
 
 
 $(document).ready(function(){
-  $('.stripe-button-el').fadeIn();
+
   $('.user-feed').delay(100).fadeIn();
 	
   $('.nonprofit-info').fadeIn();
   $('.donations').delay(100).fadeIn();
   $('.topics').delay(300).fadeIn();
 
-	$('#nonprofit-tax-id').focusout(function(){
+	$('.EIN-form').focusout(function(){
 		var ein = $('#nonprofit-tax-id')[0].value;
-		$.ajax({
-  			type:     "GET",
-  			url:      "https://projects.propublica.org/nonprofits/api/v1/organizations/"+ein+".json",
-  			dataType: "jsonp",
-  			crossDomain: true,
-		}).success(function(data){
-			console.log(data);
-			$('.stripe-sign-in-link').fadeIn();
-		});
+		$.ajax({ 
+      dataType:'jsonp', 
+      contentType:'application/json',  
+      jsonp:'jsonpfunc', 
+      url:'http://graphapi.firstgiving.com/v1/list/organization?q=government_id:'+ein,
+	}).success(function(data){
+    console.log(data.payload[0]);
+    $('.nonprofit-form').fadeIn();
+    $('#nonprofit_name')[0].value = data.payload[0].organization_name;
+    $('#nonprofit_city')[0].value = data.payload[0].city;
+    $('#nonprofit_state')[0].value = data.payload[0].region;
+    $('#nonprofit_website')[0].value = data.payload[0].url;
+    $('#nonprofit_phone')[0].value = data.payload[0].phone_number;
+    $('#nonprofit_description')[0].value = data.payload[0].mission_statement;
+    $('#nonprofit_logo')[0].value = data.payload[0].logo_path;
+    $('#nonprofit_ein')[0].value = data.payload[0].government_id;
+    $('#nonprofit_uuid')[0].value = data.payload[0].organization_uuid;
+    
 
-	});
+    
 
- 
 
-})
+  });
+
+ });
+
+});
 
 
 var url = document.location.pathname +'.json';

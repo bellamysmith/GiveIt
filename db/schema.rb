@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141030160554) do
+ActiveRecord::Schema.define(version: 20141020015054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,28 +33,14 @@ ActiveRecord::Schema.define(version: 20141030160554) do
     t.string   "city"
     t.string   "state"
     t.string   "phone"
-    t.string   "description"
-    t.string   "oauth"
+    t.text     "description"
+    t.string   "main_topic"
+    t.string   "uuid"
+    t.string   "ein"
+    t.string   "logo"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-    t.integer  "main_topic"
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "publishable_key"
   end
-
-  add_index "nonprofits", ["email"], name: "index_nonprofits_on_email", unique: true, using: :btree
-  add_index "nonprofits", ["reset_password_token"], name: "index_nonprofits_on_reset_password_token", unique: true, using: :btree
 
   create_table "topic_junction_tables", force: true do |t|
     t.integer  "user_id"
@@ -89,8 +75,6 @@ ActiveRecord::Schema.define(version: 20141030160554) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.string   "provider"
-    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
