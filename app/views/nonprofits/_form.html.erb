@@ -1,5 +1,5 @@
 
-<%= form_for(@nonprofit) do |f| %>
+<%= form_for @nonprofit, :url => new_nonprofit_path do |f| %>
   <% if @nonprofit.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@nonprofit.errors.count, "error") %> prohibited this nonprofit from being saved:</h2>

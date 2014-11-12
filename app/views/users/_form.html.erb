@@ -27,6 +27,21 @@
     <%= f.select :topic_ids, Topic.all.collect {|x| [x.topic, x.id]}, {}, :multiple => true, class: "topic-select" %>
 
   </div>
+    <%= label_tag :ccNumber, "Credit Card Number: " %><%= number_field_tag :ccNumber %>
+  <%= label_tag :ccType, "Credit Card Type: " %><%= text_field_tag :ccType %>
+  <%= label_tag :ccExpDateMonth, "Expiration Date Month: " %><%= number_field_tag :ccExpDateMonth %>
+  <%= label_tag :ccExpDateYear, "Expiration Date Year: " %><%= number_field_tag :ccExpDateYear %>
+  <%= label_tag :ccCardValidationNum, "Validation Number: " %><%= number_field_tag :ccCardValidationNum %>
+  <%= label_tag :accountName, "Name on Card: " %><%= text_field_tag :accountName %>
+  <%= label_tag :billToFirstName, "First Name of Billing Account Holder: " %><%= text_field_tag :billToFirstName %>
+  <%= label_tag :billToLastName, "Last Name: " %><%= text_field_tag :billToLastName %>
+  <%= label_tag :billToAddressLine1, "Billing Address Line 1: " %><%= text_field_tag :billToAddressLine1 %>
+  <%= label_tag :billToCity, "City: " %><%= text_field_tag :billToCity %>
+  <%= label_tag :billToState, "State: " %><%= text_field_tag :billToState %>
+  <%= label_tag :billToZip, "Billing Zip Code: " %><%= number_field_tag :billToZip %>
+  <%= label_tag :billToCountry, "Country: " %><%= text_field_tag :billToCountry %>
+  <%= label_tag :billToEmail, "Email: " %><%= email_field_tag :billToEmail %>
+  <%= hidden_field_tag :remoteAddr, value: "127.0.0.1" %>
   
     <%= f.submit "Add account info", class: "button expand" %>
   

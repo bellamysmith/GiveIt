@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :nonprofits, :controllers => { :registrations => "nonprofits/registrations"}
+
+  
   devise_for :users, :controllers => { :registrations => "users/registrations" }
   root 'users#index'
-  resources :nonprofits
+  
  
 
   resources :users
   get '/nonprofits/:id/profile' => 'nonprofits#profile', as: :profile
-
+  
+  post 'nonprofits' => 'donations#create', as: :donate
+  post 'nonprofits/new' => 'nonprofits#create', as: :new_nonprofit_path
+  resources :nonprofits
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

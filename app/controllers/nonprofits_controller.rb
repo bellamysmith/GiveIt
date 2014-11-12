@@ -60,6 +60,7 @@ class NonprofitsController < ApplicationController
   # POST /nonprofits
   # POST /nonprofits.json
   def create
+   
     @nonprofit = Nonprofit.new(nonprofit_params)
       #There is a blank id with the multiple select field, so I have to go through and push them individually into the Nonprofit's topics
       params[:nonprofit][:topic_ids].each do |a|
@@ -123,6 +124,6 @@ class NonprofitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nonprofit_params
-      params.require(:nonprofit).permit(:name, :email, :description, :website, :city, :state, :phone, :topic_id, :main_topic)
+      params.require(:nonprofit).permit(:name, :email, :description, :website, :city, :state, :phone, :topic_id, :main_topic, :ein, :logo, :uuid)
     end
 end

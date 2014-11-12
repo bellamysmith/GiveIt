@@ -70,6 +70,12 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    response = HTTParty.post("http://usapisandbox.fgdev.net/cardonfile", 
+      {:body => {"accountName" => params[:accountName], "ccNumber" => params[:ccNumber], "ccType" => params[:ccType], "ccExpDateMonth" => params[:ccExpDateMonth], "ccExpDateYear" => params[:ccExpDateYear], "billToAddressLine1" => params[:billToAddressLine1], "billToCity" => params[:billToCity], "billToState" => params[:billToState], "billToZip" => params[:billToZip], "ccCardValidationNum" => params[:ccCardValidationNum], "billToFirstName" => params[:billToFirstName], "billToLastName" => params[:billToLastName], "billToCountry" => params[:billToCountry], "billToEmail" => params[:billToEmail], "remoteAddr" => "127.0.0.1"}, 
+       :headers => {"JG_APPLICATIONKEY" => "b1d5db6b-1368-49cc-917c-e98758f28b36", "JG_SECURITYTOKEN" => "277ce2dd-7d4e-4bf2-978d-f91af2624fad"}})
+    p response.parsed_response["firstGivingDonationApi"]["firstGivingResponse"]["cardOnFileId"]
+  
+    @user.card_token = response.parsed_response["firstGivingDonationApi"]["firstGivingResponse"]["cardOnFileId"]
     respond_to do |format|
     params[:user][:topic_ids].each do |a|
       if Topic.where(id: a).count > 0
@@ -105,6 +111,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :first_name, :last_name)
+      params.require(:user).permit(:email, :first_name, :last_name, :card_token)
     end
 end

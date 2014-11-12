@@ -1,4 +1,6 @@
-<%= form_tag charges_path do %>
-<%= hidden_field_tag :nonprof, nonprofit.id %>
-  
+<%= form_tag donate_path, method: :post do %>
+	<%= hidden_field_tag :nonprof, nonprofit.uuid %>
+	<%= hidden_field_tag :nonprofit, nonprofit.id %>
+	<%= hidden_field_tag :user, current_user.id %>
+	<%= submit_tag "Donate", class: "button expand"%>
 <% end %>

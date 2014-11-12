@@ -36,6 +36,7 @@ end
 gem 'rails_12factor', group: :production
 gem 'unicorn'
 gem 'foreman'
+gem 'httparty'
 
 
 # Use ActiveModel has_secure_password
