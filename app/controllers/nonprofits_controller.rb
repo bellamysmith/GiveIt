@@ -11,13 +11,9 @@ class NonprofitsController < ApplicationController
   # GET /nonprofits/1
   # GET /nonprofits/1.json
   def show
-    if current_nonprofit == @nonprofit
-      @donation_count =  @nonprofit.donations.count
-      
-      
-     
 
-    end
+      @donation_count =  @nonprofit.donations.count
+
     dates = []
     @nonprofit.donations.each do |a|
       dates << a.created_at.day
@@ -60,7 +56,7 @@ class NonprofitsController < ApplicationController
   # POST /nonprofits
   # POST /nonprofits.json
   def create
-   
+
     @nonprofit = Nonprofit.new(nonprofit_params)
       #There is a blank id with the multiple select field, so I have to go through and push them individually into the Nonprofit's topics
       params[:nonprofit][:topic_ids].each do |a|
