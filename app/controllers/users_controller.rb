@@ -72,7 +72,7 @@ class UsersController < ApplicationController
   def update
     response = HTTParty.post("http://usapisandbox.fgdev.net/cardonfile", 
       {:body => {"accountName" => params[:accountName], "ccNumber" => params[:ccNumber], "ccType" => params[:ccType], "ccExpDateMonth" => params[:ccExpDateMonth], "ccExpDateYear" => params[:ccExpDateYear], "billToAddressLine1" => params[:billToAddressLine1], "billToCity" => params[:billToCity], "billToState" => params[:billToState], "billToZip" => params[:billToZip], "ccCardValidationNum" => params[:ccCardValidationNum], "billToFirstName" => params[:billToFirstName], "billToLastName" => params[:billToLastName], "billToCountry" => params[:billToCountry], "billToEmail" => params[:billToEmail], "remoteAddr" => "127.0.0.1"}, 
-       :headers => {"JG_APPLICATIONKEY" => "b1d5db6b-1368-49cc-917c-e98758f28b36", "JG_SECURITYTOKEN" => "277ce2dd-7d4e-4bf2-978d-f91af2624fad"}})
+       :headers => {"JG_APPLICATIONKEY" => ENV['JG_APPLICATIONKEY'], "JG_SECURITYTOKEN" => ENV['JG_SECURITYTOKEN']}})
     p response.parsed_response["firstGivingDonationApi"]["firstGivingResponse"]["cardOnFileId"]
   
     @user.card_token = response.parsed_response["firstGivingDonationApi"]["firstGivingResponse"]["cardOnFileId"]
