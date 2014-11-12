@@ -1,8 +1,6 @@
 <body class="home-page">
     <% if user_signed_in? %>
       <%= render '/nav' %>
-    <% elsif nonprofit_signed_in? %>
-      <%= render '/np_nav' %>
     <% end %>
   <header class="home-header">
     <% if !user_signed_in? && !nonprofit_signed_in? %>
