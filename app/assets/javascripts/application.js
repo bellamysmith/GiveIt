@@ -88,8 +88,8 @@ var svg1 = d3.select(".donations").append("svg")
 
 d3.tsv($.get(url, function(data) {
   console.log(data);
-  x.domain(data.data.map(function(d) { console.log(d.date);return d.date; }));
-  y.domain([0, 3+d3.max(data.data, function(d) { console.log(d.donations);return d.donations; })]);
+  x.domain(data.data[0].map(function(d) { console.log(d.date);return d.date; }));
+  y.domain([0, 3+d3.max(data.data[0], function(d) { console.log(d.donations);return d.donations; })]);
 
   svg1.append("g")
       .attr("class", "x axis")
@@ -107,7 +107,7 @@ d3.tsv($.get(url, function(data) {
       .text("# of Donations");
 
   svg1.selectAll(".bar")
-      .data(data.data)
+      .data(data.data[0])
     .enter().append("rect")
       .attr("class", "bar")
       .attr("x", function(d) { return x(d.date); })
@@ -177,8 +177,69 @@ data.data.forEach(function(d) {
 
 }));
 
+var allDonations = 
+    d3.select('.d3')
+      .append("svg")
+        .attr("width", 1200)
+        .attr("height", 900);
+  var url = document.location.pathname +'.json';
+    
+
+  var jsonEventUsers = $.get(url,
+    function(data) {
+     
+    var divWidth = 1000;   
+    
+    allDonations.selectAll("circle")
+      .data(data.data[0])
+      .enter()
+      .append("circle")
+      .attr("r", 10)
+      .attr("cy", function(d, i){return (Math.floor(Math.random() * (700 - 200)) + 200)})
+      .attr("cx", function(d, index){
+         if (d.donations > 1){
+            return (divWidth/d.donations)+(index*50)
+          } else {
+            return (divWidth - (index+100))
+          }
+        })
+      .style("fill", function(d, index){
+        
+          return "rgba(" + Math.floor(Math.random() * (250 - 0) + 0) + ",255,255, .9)"
+        // var color = index * 10 + 50;
+        // return "rgba("+color+","+color+ ","+color+",1)";
+      })
+      .on('mouseover', function(d){
+          var nodeSelection = d3.select(this).style({opacity:'.6'});
+          d3.select('svg').append('text')
+          d3.select('svg').select("text")
+            .html(d.nonprofit)
+            .attr("y", 100)
+            .attr('x', 330)
+            .style("fill", "#FFF")
+            .style('font-size', '30px')})
+      .on('mouseleave', function(d){
+        d3.select(this).style({opacity: '1'})
+      })
+      .transition()
+        .duration(750)
+        .delay(function(d, i) { return i * 200; })
+        .attr("r", function(d){return d.donations*(data.data[0].length* (10 - data.data[0].length))});
+    
+    
 
 
+
+
+    profileEventHolder.attr("width", divWidth()); 
+ 
+
+
+    $('.events-feed').css("width", function() {
+      return divWidth()
+    })  
+
+  }) //Last closing brackets for jsonEventUsers
 
 
 

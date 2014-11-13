@@ -71,7 +71,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     response = HTTParty.post("http://usapisandbox.fgdev.net/cardonfile", 
-      {:body => {"accountName" => params[:accountName], "ccNumber" => params[:ccNumber], "ccType" => params[:ccType], "ccExpDateMonth" => params[:ccExpDateMonth], "ccExpDateYear" => params[:ccExpDateYear], "billToAddressLine1" => params[:billToAddressLine1], "billToCity" => params[:billToCity], "billToState" => params[:billToState], "billToZip" => params[:billToZip], "ccCardValidationNum" => params[:ccCardValidationNum], "billToFirstName" => params[:billToFirstName], "billToLastName" => params[:billToLastName], "billToCountry" => params[:billToCountry], "billToEmail" => params[:billToEmail], "remoteAddr" => "127.0.0.1"}, 
+      {:body => {"accountName" => "Demo User", "ccNumber" => "4457010000000009", "ccType" => "VI", "ccExpDateMonth" => "01", "ccExpDateYear" => "18", "billToAddressLine1" => "1 Main St", "billToCity" => "Burlington", "billToState" => "MA", "billToZip" => "01803", "ccCardValidationNum" => "150", "billToFirstName" => "Demo", "billToLastName" => "User", "billToCountry" => "US", "billToEmail" => "demo@givebyone.com", "remoteAddr" => "127.0.0.1"}, 
        :headers => {"JG_APPLICATIONKEY" => ENV['JG_APPLICATIONKEY'], "JG_SECURITYTOKEN" => ENV['JG_SECURITYTOKEN']}})
     p response.parsed_response["firstGivingDonationApi"]["firstGivingResponse"]["cardOnFileId"]
   

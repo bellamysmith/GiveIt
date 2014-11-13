@@ -6,13 +6,21 @@ class NonprofitsController < ApplicationController
   def index
     @nonprofits = Nonprofit.all.shuffle
     @featured = Nonprofit.all.sample  
+    @all_donations = []
+    Nonprofit.all.each do |n|
+      @all_donations << { 'nonprofit' => n.name, 'donations' => n.donations.count}
+    end
+    respond_to do |format|
+          format.html {@nonprofits = Nonprofit.all.shuffle}
+          format.json { render :json => {data: [@all_donations]} }
+    end
+
   end
 
   # GET /nonprofits/1
   # GET /nonprofits/1.json
   def show
-
-      @donation_count =  @nonprofit.donations.count
+    @donation_count =  @nonprofit.donations.count
 
     dates = []
     @nonprofit.donations.each do |a|
@@ -29,16 +37,22 @@ class NonprofitsController < ApplicationController
       @donations.reverse.each do |a|
         @donations_by_date << { 'date' => a, 'donations' => dates.count(a.day)} if !@donations_by_date.include?({  'date' => a, 'donations' => @donations.count(a)})
       end
-    
+    @all_donations = []
+    Nonprofit.all.each do |n|
+      @all_donations << { 'nonprofit' => n, 'donations' => n.donations.count}
+    end
       
     respond_to do |format|
           format.html {@user = Nonprofit.find(params[:id])}
-          format.json { render :json => {data: @donations_by_date} }
+          format.json { render :json => {data: [@donations_by_date, @all_donations]} }
     end
   end
 
   # GET /nonprofits/new
   def new
+    unless current_user.email == "admin@givebyone.com"
+      redirect_to root_path
+    end
     @nonprofit = Nonprofit.new
   end
 
@@ -48,7 +62,7 @@ class NonprofitsController < ApplicationController
 
   # GET /nonprofits/1/edit
   def edit
-     if @user != current_user
+    unless current_user.email == "admin@givebyone.com"
       redirect_to root_path
     end
   end
@@ -80,6 +94,9 @@ class NonprofitsController < ApplicationController
   # PATCH/PUT /nonprofits/1
   # PATCH/PUT /nonprofits/1.json
   def update
+    unless current_user.email == "admin@givebyone.com"
+      redirect_to root_path
+    end
     respond_to do |format|
       #Delete all of the topics to update with new ones
       @nonprofit.topics.delete_all
@@ -105,6 +122,9 @@ class NonprofitsController < ApplicationController
   # DELETE /nonprofits/1
   # DELETE /nonprofits/1.json
   def destroy
+    unless current_user.email == "admin@givebyone.com"
+      redirect_to root_path
+    end
     @nonprofit.destroy
     respond_to do |format|
       format.html { redirect_to nonprofits_url, notice: 'Nonprofit was successfully destroyed.' }

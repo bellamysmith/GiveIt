@@ -58,7 +58,7 @@ header{
 		padding: 10px;
 	}
 	width: 87%;
-	height: 500px;
+	min-height: 500px;
 	margin: 0 auto;
 	button{
 		margin: 10px 20%;
@@ -66,22 +66,14 @@ header{
 		position: realtive;
 
 	}
-	img{
-		float: right;
-		position: relative;
-		right: 6%;
-		top: 30px;
-		width: 420px;
-		height: 300px;
-		border: 2px solid #e0e0e0;
-	}
+
 	.padding{
 		padding: 20px;
 		position: relative;
 		top: 50px;
-		margin-left: 50px;
+		margin: 10px;
 		background-color: #F6F7F8;
-		width: 50%;
+		
 	}
 
 }
