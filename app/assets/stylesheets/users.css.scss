@@ -229,7 +229,9 @@ header{
 .root-page{
 	margin: 0;
 	padding: 0;
-	background: image-url('venice.jpg');
+	background: image-url('clouds.jpg');
+	background-size: cover;
+	background-repeat: none;
 }
 
 #landingpageheader{
@@ -249,7 +251,7 @@ header{
 	background: rgba(100,5,5,.5);
 }
 #scenethree{
-    height:100vh;
+    height:40vh;
     background-color: rgba(5,5,100,.5);
 }
 
@@ -325,15 +327,6 @@ header{
 	}
 	position: relative;
 	top: 200px;
-}
-
-.link-container{
-	background-color: #505050;
-	width: 100%;
-	height: 50px;
-	position: relative;
-	/*top: -50px;*/
-	/*padding-top: 15px;*/
 }
 .home-page{
 	background-color: lighten(#469db8, 40%);

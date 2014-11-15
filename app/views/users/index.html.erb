@@ -1,7 +1,4 @@
 <style>
-  #dollars{
-    /*margin-top: 100px;*/
-  }
   #parallaxbg, #parallaxbg2{
     /*height:100vh;*/
     position:absolute;
@@ -11,19 +8,31 @@
     /*background-attachment: fixed;*/
   }
   /*fixed to original bg*/
-  #dollars{
+  /*#dollars{
     height:300px;
-  }
+  }*/
+
+
+
   /*what's pinned to moving parallaxbg*/
   #logo, #abouttext{
-    position:absolute;
+    /*position:absolute;*/
+    position: relative;
     text-align: center;
+    top:10vh;
     width:100vw;
   }
-  #abouttext, #logo>h2, #logo>h5, #descriptor, #sitetitle, #linkcolor{
-    color:black;
+  #abouttext, #descriptor, #sitetitle, #linkcolor{
+    color:white;
     font-weight: 100;
     font-family: Helvetica;
+  }
+  #descriptor, #sitetitle{
+    position: relative;
+  }
+  #sitetitle{
+    font-weight: 900;
+    font-size: 50px;
   }
   #aboutcontainer{
 
@@ -39,9 +48,9 @@
     margin: 0 auto;
     text-align: left;
   }
-  #fullwidth{
+  /*#fullwidth{
     text-align: center;
-  }
+  }*/
   #contactinfo{
     /*margin-top: 30vh;*/
     position: relative;
@@ -49,11 +58,28 @@
     margin:0;
     text-align:center;
     visibility: none;
-    top:40vh;
+    top:5vh;
   }
   .link-container{
-    bottom:0;
-    position:absolute;
+    position: relative;
+    text-align: center;
+    top:80px;
+    /*width:200px;*/
+    font-size: 20px;
+    /*margin:0 auto;*/
+    /*bottom:0;
+    position:absolute;*/
+  }
+  #signup, #signin{
+    display: inline-block;
+    color:white;
+    border:1px solid white;
+    padding:20px;
+    /*float:left;*/
+  }
+  #signup:hover, #signin:hover{
+    color:rgba(0,0,0,1);
+    border: 1px solid rgba(0,0,0,1);
   }
   .spacer{
     height:300px;
@@ -66,12 +92,13 @@
   <% if user_signed_in? %>
     <%= render '/nav' %>
   <% end %>
+
   <!-- slide 1 -->
   <div id="landingpageheader">
     <div id="parallaxbg"></div>
-    <div id="fullwidth">
+    <!-- <div id="fullwidth">
       <img src=<%= asset_path "dollar-bills.png"%> id="dollars">
-    </div>
+    </div> -->
     <div id="logo">
       <h2 id="sitetitle">Five For Today</h2>
       <h5 id="descriptor">Give $5 to One Non-profit with just a click, as many times as you want</h5>
@@ -79,8 +106,10 @@
 
     <div class="link-container">
       <% if !user_signed_in? %> 
-        <%= link_to "Sign Up", new_user_registration_path %> |
-        <%= link_to "Sign In", new_user_session_path %> 
+        
+          <%= link_to "Sign Up", new_user_registration_path, id: "signup" %>
+        
+          <%= link_to "Sign In", new_user_session_path, id: "signin" %> 
       <% end %>
     </div>
   </div>
@@ -109,19 +138,20 @@
 <script>
   var controller = new ScrollMagic();
   // parallax
-  new ScrollScene({
-      triggerElement: "#landingpageheader",
-      // speed of items pinned on parallax bg
-      duration: $(window).height() + 150,
-      offset: -150
-    })
-    .addTo(controller)
-    .triggerHook("onCenter")
-    .setTween(new TimelineMax().add([
-      TweenMax.fromTo("#logo", 1, {scale: 1, alpha: 1, top: "80%"}, {top: "0%", ease: Linear.easeNone}),
-      TweenMax.to("#parallaxbg", 1, {backgroundPosition: "0 -260%", ease: Linear.easeNone})
-    ]));
+  // new ScrollScene({
+  //     triggerElement: "#landingpageheader",
+  //     // speed of items pinned on parallax bg
+  //     duration: $(window).height() + 150,
+  //     offset: -150
+  //   })
+  //   .addTo(controller)
+  //   .triggerHook("onCenter")
+  //   .setTween(new TimelineMax().add([
+  //     TweenMax.fromTo("#logo", 1, {scale: 1, alpha: 1, top: "80%"}, {top: "0%", ease: Linear.easeNone}),
+  //     TweenMax.to("#parallaxbg", 1, {backgroundPosition: "0 -260%", ease: Linear.easeNone})
+  //   ]));
 
+  // parallax
   new ScrollScene({
     triggerElement: "#scenetwo",
     duration: $(window).height() + 150,
@@ -130,7 +160,8 @@
   .addTo(controller)
     .triggerHook("onCenter")
     .setTween(new TimelineMax().add([
-      TweenMax.fromTo("#aboutcontainer", 1, {scale: 1, alpha: 1, top: "80%"}, {margin: "0 auto",top: "0%", ease: Linear.easeNone}),
+      // first top refers to the center point
+      TweenMax.fromTo("#aboutcontainer", 1, {scale: 1, alpha: 1, top: "60%"}, {top: "0%", ease: Linear.easeNone}),
       TweenMax.to("#parallaxbg2", 1, {backgroundPosition: "0 -260%", ease: Linear.easeNone})
     ]));
   
@@ -138,7 +169,7 @@
 
 
 
-  var sceneOptions = {duration: 300, offset: -150};
+  var sceneOptions = {duration: 300, offset: -300};
   var element = $("#contactinfo");
 
   // fade
