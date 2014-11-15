@@ -235,6 +235,11 @@ header{
 	background-size: cover;
 	background-repeat: none;
 }
+#abouttext{
+	background: image-url('clouds.jpg');
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
 
 #landingpageheader{
 	width:100vw;
@@ -250,11 +255,11 @@ header{
 	/*background: image-url('waves.jpg');
 	background-size: cover;
 	background-position:center;*/
-	background: rgba(150,150,150,.5);
+	background: rgba(0,0,0,.9);
 }
 #scenethree{
     height:40vh;
-    background-color: rgba(0,0,0,.7);
+    /*background-color: rgba(0,0,0,.7);*/
 }
 
 
