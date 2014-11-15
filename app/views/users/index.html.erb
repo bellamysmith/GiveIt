@@ -25,6 +25,20 @@
     font-weight: 100;
     font-family: Helvetica;
   }
+  #aboutcontainer{
+
+    /*max-width: 600px;*/
+    /*margin: 0 auto;*/
+    position: absolute;
+    width:100vw;
+
+  }
+  #abouttext{
+    max-width: 600px;
+    position: relative;
+    margin: 0 auto;
+    text-align: left;
+  }
   #fullwidth{
     text-align: center;
   }
@@ -71,15 +85,17 @@
     </div>
   </div>
 
-  <div class="spacer"></div>
+  <!-- <div class="spacer"></div> -->
 
   <!-- slide 2 -->
   <div class="aboutdiv" id="scenetwo">
   <div id="parallaxbg2"></div>
+  <div id="aboutcontainer">
     <h4 class="nomargins" id="abouttext">By curating a list of nonprofits, based specifically on your personal interests, Five for Today aims to make giving to a nonprofit you believe in, as easy as pressing a button. And hey, its just a dollar!</h4>
   </div>
+  </div>
 
-  <div class="spacer"></div>
+  <!-- <div class="spacer"></div> -->
 
 
   <!-- slide 3 -->
@@ -114,7 +130,7 @@
   .addTo(controller)
     .triggerHook("onCenter")
     .setTween(new TimelineMax().add([
-      TweenMax.fromTo("#abouttext", 1, {scale: 1, alpha: 1, top: "80%"}, {top: "0%", ease: Linear.easeNone}),
+      TweenMax.fromTo("#aboutcontainer", 1, {scale: 1, alpha: 1, top: "80%"}, {margin: "0 auto",top: "0%", ease: Linear.easeNone}),
       TweenMax.to("#parallaxbg2", 1, {backgroundPosition: "0 -260%", ease: Linear.easeNone})
     ]));
   
