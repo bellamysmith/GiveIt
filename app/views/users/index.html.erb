@@ -1,32 +1,127 @@
+<style>
+  #dollars{
+    /*margin-top: 100px;*/
+  }
+  #parallaxbg, #parallaxbg2{
+    height:100vh;
+    position:absolute;
+  }
+  #landingpageheader, #scenetwo, #scenethree{
+    position: relative;
+  }
+  #scenethree{
+    height:100vh;
+  }
+  /*fixed to original bg*/
+  #dollars{
+    height:300px;
+  }
+  /*what's pinned to moving parallaxbg*/
+  #logo, #abouttext{
+    position:absolute;
+    text-align: center;
+    width:100vw;
+  }
+  #abouttext, #logo>h2, #logo>h5, #descriptor, #sitetitle, #linkcolor{
+    color:white;
+    font-weight: 100;
+    font-family: Helvetica;
+  }
+  #fullwidth{
+    text-align: center;
+  }
+  #contactinfo{
+    /*margin-top: 30vh;*/
+    position: relative;
+    padding:0;
+    margin:0;
+    text-align:center;
+    visibility: none;
+    top:40vh;
+  }
+</style>
+
 <body class="root-page">
   <% if user_signed_in? %>
     <%= render '/nav' %>
-
   <% end %>
 
-<header class="root-header">
-  <img src=<%= asset_path "dollar-bills.png"%>>
-  <h2>Give One to One </h2>
-  <h5>Give $1 to One Non-profit with just a click, as many times as you want</h5>
+  <!-- slide 1 -->
+  <div id="landingpageheader">
+    <div id="parallaxbg"></div>
+    <div id="fullwidth">
+      <img src=<%= asset_path "dollar-bills.png"%> id="dollars">
+    </div>
+    <div id="logo">
+      <h2 id="sitetitle">Five For Today</h2>
+      <h5 id="descriptor">Give $5 to One Non-profit with just a click, as many times as you want</h5>
+    </div>
+  </div>
 
-</header>
-<div class="root-about">
-  <div class="link-container">
+  <!-- slide 2 -->
+  <div class="aboutdiv" id="scenetwo">
+  <div id="parallaxbg2"></div>
+    <div class="link-container">
       <% if !user_signed_in? %> 
-    <%= link_to "Sign Up", new_user_registration_path %> |
-    <%= link_to "Sign In", new_user_session_path %> 
-  <% end %>
-</div>
-  <h4>By curating a list of nonprofits, based specifically on your personal interests, Give One to One aims to make giving to a nonprofit you believe in, as easy as pressing a button. And hey, its just a dollar!</h4>
-</div>
-<div class="root-footer">
-  <a href="mailto:bellamysmith1@gmail.com">Have Questions? Contact Us!</a>
-</div>
+        <%= link_to "Sign Up", new_user_registration_path %> |
+        <%= link_to "Sign In", new_user_session_path %> 
+      <% end %>
+    </div>
+    <h4 class="nomargins" id="abouttext">By curating a list of nonprofits, based specifically on your personal interests, Five for Today aims to make giving to a nonprofit you believe in, as easy as pressing a button. And hey, its just a dollar!</h4>
+  </div>
+
+  <!-- slide 3 -->
+  <div id="scenethree">
+    <h2 id="contactinfo"><a id="linkcolor" href="mailto:bellamysmith1@gmail.com">Have Questions? Contact Us!</a></h2>
+  </div>
 
 
 
 
+<script>
+  var controller = new ScrollMagic();
+  // parallax
+  new ScrollScene({
+      triggerElement: "#landingpageheader",
+      // speed of items pinned on parallax bg
+      duration: $(window).height() + 300,
+      offset: -150
+    })
+    .addTo(controller)
+    .triggerHook("onCenter")
+    .setTween(new TimelineMax().add([
+      TweenMax.fromTo("#logo", 1, {scale: 1, alpha: 1, top: "80%"}, {top: "0%", ease: Linear.easeNone}),
+      TweenMax.to("#parallaxbg", 1, {backgroundPosition: "0 -260%", ease: Linear.easeNone})
+    ]));
 
+  new ScrollScene({
+    triggerElement: "#scenetwo",
+    duration: $(window).height() + 300,
+    offset: -150 
+  })
+  .addTo(controller)
+    .triggerHook("onCenter")
+    .setTween(new TimelineMax().add([
+      TweenMax.fromTo("#abouttext", 1, {scale: 1, alpha: 1, top: "80%"}, {top: "0%", ease: Linear.easeNone}),
+      TweenMax.to("#parallaxbg2", 1, {backgroundPosition: "0 -260%", ease: Linear.easeNone})
+    ]));
+  
+
+
+
+
+  var sceneOptions = {duration: 600, offset: -400};
+  var element = $("#contactinfo");
+
+  // move
+  new ScrollScene(sceneOptions)
+    .addTo(controller)
+    .triggerHook("onCenter")
+    .triggerElement(element)
+    .setTween(TweenMax.from(element, 1, {left: "-20%", marginLeft: -500, opacity: 0, ease: Back.easeOut}));
+
+        
+</script>
 
 
 
