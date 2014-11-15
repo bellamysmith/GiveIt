@@ -16,10 +16,10 @@
 
  */
 
-@import url(http://fonts.googleapis.com/css?family=Lobster);
+@import url(http://fonts.googleapis.com/css?family=Leckerli+One);
+@import url(http://fonts.googleapis.com/css?family=Lato);
 
-
-@font-face {
+/*@font-face {
 	font-family: 'Aileron-Regular';
 	src: asset-url('Aileron-Regular.otf');
 	font-weight: normal;
@@ -30,13 +30,14 @@
 	src: asset-url('Lovelo_Black.otf');
 	font-weight: normal;
 	font-size: normal;
-}
+}*/
+
 .lobster{
-	font-family: 'Lobster', cursive;
+	font-family: 'Leckerli One', cursive;
 }
-body {
-	font-family: 'Aileron-Regular';
-	background-color: #e0e0e0;
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: 'Lato', sans-serif;
+	/*background-color: #e0e0e0;*/
 
 }
 
