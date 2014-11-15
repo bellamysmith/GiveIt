@@ -16,6 +16,7 @@
 
  */
 
+@import url(http://fonts.googleapis.com/css?family=Lobster);
 
 
 @font-face {
@@ -30,7 +31,9 @@
 	font-weight: normal;
 	font-size: normal;
 }
-
+.lobster{
+	font-family: 'Lobster', cursive;
+}
 body {
 	font-family: 'Aileron-Regular';
 	background-color: #e0e0e0;
@@ -38,14 +41,14 @@ body {
 }
 
 .sign-up-form{
-	width: 600px;
+	max-width: 400px;
 	margin: 0 auto;
 	background: rgba(255,255,255,0.8);
 	padding: 50px;
-	padding-top: 30px;
-	padding-bottom: 20px;
+	/*padding-top: 30px;
+	padding-bottom: 20px;*/
 	position: relative;
-	top: 250px;
+	/*top: 250px;*/
 	border-radius: 3px;
 	input[type="email"], input[type="password"]{
 		background-color: rgba(255,255,255,0.3);

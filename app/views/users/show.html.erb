@@ -1,19 +1,51 @@
+<style type="text/css">
+	#dashheader{
+		font-family: 'Lobster', cursive;
+	}
+	.otherfont{
+		font-family: Helvetica;
+		font-weight: 100;
+		font-size: 16px;
+	}
+	.user-show-header{
+		/*background-color: none;*/
+		margin-top: 50px;
+		height:auto;
+	}
+	.user-show-page{
+		/*background-color: rgba(76,152,244,1);;*/
+	}
+	.button{
+		/*border-radius: 50%;*/
+	}
+	.user-topics, .user-donations, .user-feed{
+		/*border-color: rgba(130,180,250,1);*/
+		/*border-radius: 5px;*/
+	}
+	.inline-block{
+		display: inline-block;
+	}
+</style>
+
+
 <body class="user-show-page">
 <% if user_signed_in? %>
   <%= render '/nav' %>
 <% end %>
-<header class="user-show-header">
+<div class="user-show-header">
 
-	<h2>Giving Dashboard</h2>
-</header>
+	<h2 id="dashheader">Five For Today <span class="otherfont">Dashboard</span></h2>
+</div>
 
 
 <div class="user-topics large-7 columns">
-	<a><%= link_to "Add Topics", edit_user_path(@user) %></a>
-	<h3> Your Topics</h3>
+	<h3 class="inline-block"> Your Topics</h3>
+	<%= link_to "Add Topics", edit_user_path(@user), :class => "inline-block" %>
+	<div>
 	<% @user.topics.each do |a| %>
 		<p class="button"><%= a.topic %></p>
 	<% end %>
+	</div>
 
 	
 </div>

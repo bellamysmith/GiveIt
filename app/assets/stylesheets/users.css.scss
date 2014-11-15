@@ -27,18 +27,20 @@ header{
 }
 .user-sign-up-page{
 	background-color: #4eafcd;
+	height:100vh;
 }
 .sign-up-header{
 	background-color: transparent;
-	position: absolute;
+	/*position: absolute;*/
 	
-	width: 550px;
-	h2{text-align: right;
+	/*width: 550px;*/
+	h2{
+		/*text-align: right;*/
 		position: relative;
-		top: -80px;
+		/*top: -80px;*/
 		color: #FFF;
 		font-size: 50px;
-		left: -200px;
+		/*left: -200px;*/
 		color: #e0e0e0;}
 	img{
 		width: 150px;
@@ -151,10 +153,10 @@ header{
 	.button{
 		background-color: #f05b47;
 	}
-	a{
+	/*a{
 		position: relative;
 		left: 90%;
-	}
+	}*/
 
 }
 .user-feed{

@@ -161,7 +161,7 @@
     .triggerHook("onCenter")
     .setTween(new TimelineMax().add([
       // first top refers to the center point
-      TweenMax.fromTo("#aboutcontainer", 1, {scale: 1, alpha: 1, top: "60%"}, {top: "0%", ease: Linear.easeNone}),
+      TweenMax.fromTo("#aboutcontainer", 1, {scale: 1, alpha: 1, top: "60%"}, {top: "-10%", ease: Linear.easeNone}),
       TweenMax.to("#parallaxbg2", 1, {backgroundPosition: "0 -260%", ease: Linear.easeNone})
     ]));
   
