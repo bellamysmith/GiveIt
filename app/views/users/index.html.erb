@@ -3,14 +3,12 @@
     /*margin-top: 100px;*/
   }
   #parallaxbg, #parallaxbg2{
-    height:100vh;
+    /*height:100vh;*/
     position:absolute;
   }
   #landingpageheader, #scenetwo, #scenethree{
     position: relative;
-  }
-  #scenethree{
-    height:100vh;
+    /*background-attachment: fixed;*/
   }
   /*fixed to original bg*/
   #dollars{
@@ -23,7 +21,7 @@
     width:100vw;
   }
   #abouttext, #logo>h2, #logo>h5, #descriptor, #sitetitle, #linkcolor{
-    color:white;
+    color:black;
     font-weight: 100;
     font-family: Helvetica;
   }
@@ -39,13 +37,21 @@
     visibility: none;
     top:40vh;
   }
+  .link-container{
+    bottom:0;
+    position:absolute;
+  }
+  .spacer{
+    height:300px;
+    width:100%;
+    background:black;
+  }
 </style>
 
 <body class="root-page">
   <% if user_signed_in? %>
     <%= render '/nav' %>
   <% end %>
-
   <!-- slide 1 -->
   <div id="landingpageheader">
     <div id="parallaxbg"></div>
@@ -56,19 +62,25 @@
       <h2 id="sitetitle">Five For Today</h2>
       <h5 id="descriptor">Give $5 to One Non-profit with just a click, as many times as you want</h5>
     </div>
-  </div>
 
-  <!-- slide 2 -->
-  <div class="aboutdiv" id="scenetwo">
-  <div id="parallaxbg2"></div>
     <div class="link-container">
       <% if !user_signed_in? %> 
         <%= link_to "Sign Up", new_user_registration_path %> |
         <%= link_to "Sign In", new_user_session_path %> 
       <% end %>
     </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <!-- slide 2 -->
+  <div class="aboutdiv" id="scenetwo">
+  <div id="parallaxbg2"></div>
     <h4 class="nomargins" id="abouttext">By curating a list of nonprofits, based specifically on your personal interests, Five for Today aims to make giving to a nonprofit you believe in, as easy as pressing a button. And hey, its just a dollar!</h4>
   </div>
+
+  <div class="spacer"></div>
+
 
   <!-- slide 3 -->
   <div id="scenethree">
@@ -84,7 +96,7 @@
   new ScrollScene({
       triggerElement: "#landingpageheader",
       // speed of items pinned on parallax bg
-      duration: $(window).height() + 300,
+      duration: $(window).height() + 150,
       offset: -150
     })
     .addTo(controller)
@@ -96,7 +108,7 @@
 
   new ScrollScene({
     triggerElement: "#scenetwo",
-    duration: $(window).height() + 300,
+    duration: $(window).height() + 150,
     offset: -150 
   })
   .addTo(controller)
@@ -110,16 +122,15 @@
 
 
 
-  var sceneOptions = {duration: 600, offset: -400};
+  var sceneOptions = {duration: 300, offset: -150};
   var element = $("#contactinfo");
 
-  // move
+  // fade
   new ScrollScene(sceneOptions)
     .addTo(controller)
     .triggerHook("onCenter")
     .triggerElement(element)
-    .setTween(TweenMax.from(element, 1, {left: "-20%", marginLeft: -500, opacity: 0, ease: Back.easeOut}));
-
+    .setTween(TweenMax.from(element, 1, {autoAlpha: 0}));
         
 </script>
 

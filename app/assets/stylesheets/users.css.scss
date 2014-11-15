@@ -229,23 +229,32 @@ header{
 .root-page{
 	margin: 0;
 	padding: 0;
+	background: image-url('venice.jpg');
 }
 
 #landingpageheader{
 	width:100vw;
 	height:100vh;
-	background: image-url('clouds.jpg');
-	background-size: cover;
-	background-position:center;
+	/*background: image-url('clouds.jpg');*/
+	/*background-size: cover;*/
+	/*background-position:center;*/
+	/*background: rgba(5,5,5,.5);*/
 }
-.aboutdiv{
+#scenetwo{
 	width:100vw;
 	height:100vh;
-	background-color: green;
-	background: image-url('waves.jpg');
+	/*background: image-url('waves.jpg');
 	background-size: cover;
-	background-position:center;
+	background-position:center;*/
+	/*background: rgba(5,5,5,.5);*/
 }
+#scenethree{
+    height:100vh;
+    /*background-color: rgba(5,5,5,.5);*/
+}
+
+
+
 .root-footer{
 	position: relative;
 	/*top: 300px;*/
@@ -255,7 +264,7 @@ header{
 	/*padding: 50px;*/
 	height: 100vh;
 	color:white;
-	background: gray;
+	/*background: black;*/
 	a{ color: #FFF;}
 }
 .nomargins{
